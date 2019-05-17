@@ -1,0 +1,31 @@
+
+
+Setting Timing Driven Routing Constraints ...  Thu Nov 21 10:50:13 2013
+================================================================================
+slack  (+21.529 : +23.133 : +24.529) std_dev(1.853)
++21.579 (15), +21.629 (19), +21.679 (23), +21.729 (13), +21.779 (3)
++21.829 (1), +21.929 (2), +22.029 (0), +22.129 (2), +22.329 (160)
++22.529 (1584), +23.029 (298), +23.529 (4), +24.529 (1299), +24.529^ (1)
+
+[1] ...
+select (+21.529 : +2.000)
+total_net(4091) select(0) bad(0) tieup(0) special(0) dont_route(19)
+hi_fanout(6) already_constr(0) short_net(0) pos_slack(4066)
+
+[2] ...
+select (+21.529 : +21.529)
+total_net(4091) select(0) bad(0) tieup(0) special(0) dont_route(3)
+hi_fanout(12) already_constr(16) short_net(3399) no_timing(0) pos_slack(661)
+
+
+[3] ...
+M1 res 0.380000 ohm, cap 0.158504 ff, delay 0.860452 ns
+M2 res 0.250000 ohm, cap 0.116057 ff, delay 0.414490 ns
+M3 res 0.250000 ohm, cap 0.162300 ff, delay 0.579641 ns
+M4 res 0.210000 ohm, cap 0.168753 ff, delay 0.253129 ns
+M5 res 0.210000 ohm, cap 0.166731 ff, delay 0.250096 ns
+prefer (2 - 5)
+select (+21.529 : +0.000)
+total_net(4091) select(0) bad(0) tieup(0) special(0) dont_route(19)
+hi_fanout(6) already_constr(0) short_net(4043) pos_slack(23)
+

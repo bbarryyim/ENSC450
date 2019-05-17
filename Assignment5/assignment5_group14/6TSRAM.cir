@@ -1,0 +1,78 @@
+6T SRAM
+
+* Technology Dependent design rules/parameters
+.include /ensc/fac1/fcampi/esil/hspice/cmosp18/rules.inc
+
+* Transistor models 
+.protect
+.LIB `/ensc/fac1/fcampi/esil/hspice/cmosp18/log018.l' TT  $ typical process corner.
+.unprotect
+
+* Supply Sources ********************************************
+.param pwr=1.2
+.temp  25
+Vvdd  vdd  0 dc pwr
+Vvdds vdds 0 dc pwr
+Vgnd  gnd  0 dc 0
+Vgnds gnds 0 dc 0
+
+* Subcircuits ************************************************
+.subckt T6_MemCell bitline bitlinen wordline vdd vdds gnd gnds
+XnmosML A    wordline bitline  gnds nt_st w=1*Wn
+XnmosSL gnd  An       A        gnds nt_st w=1*Wn
+XpmosWL vdd  An       A        vdds pt_st w=1*Wn
+XpmosWR vdd  A        An       vdds pt_st w=1*Wn
+XnmosSR gnds A        An       gnds nt_st w=1*Wn
+XnmosMR An   wordline bitlinen gnds nt_st w=1*Wn
+.ends 
+
+* Transmission Gate is composed of a PMOS and NMOS, with common source and drain gates  
+.subckt TRANSGATE d g notg s vdds gnds Wn=Wm#  
+Xpmos d notg s vdds pt_st Wn=2*Wm#
+Xnmos d g    s gnds nt_st Wn=1*Wm#
+.ends
+
+* CMOS Inverter is composed of a PMOS and NMOS
+.subckt INV a z vdd gnd vdds gnds Wn=Wm#
+Xpmos vdd a z vdds pt_st Wn=2*Wm#
+Xnmos gnd a z gnds nt_st Wn=1*Wm#
+.ends
+
+* Logic ******************************************************
+.param Wn=Wm#
+XINV1  enbit   nen1   vdd   gnd  vdds gnds INV Wn=Wm#
+XINV2  enbitn  nen2   vdd   gnd  vdds gnds INV Wn=Wm#
+XTRAN1 Vinbit  enbit  nen1  bit  vdds gnds TRANSGATE Wn=Wm#
+XTRAN2 Vinbitn enbitn nen2  bitn vdds gnds TRANSGATE Wn=Wm#
+XSRAM0 bit     bitn   word0 vdd  vdds gnd gnds T6_MemCell Wn=Wm#
+XSRAM1 bit     bitn   word1 vdd  vdds gnd gnds T6_MemCell Wn=Wm#
+XSRAM2 bit     bitn   word2 vdd  vdds gnd gnds T6_MemCell Wn=Wm#
+XSRAM3 bit     bitn   word3 vdd  vdds gnd gnds T6_MemCell Wn=Wm#
+XSRAM4 bit     bitn   word4 vdd  vdds gnd gnds T6_MemCell Wn=Wm#
+XSRAM5 bit     bitn   word5 vdd  vdds gnd gnds T6_MemCell Wn=Wm#
+XSRAM6 bit     bitn   word6 vdd  vdds gnd gnds T6_MemCell Wn=Wm#
+XSRAM7 bit     bitn   word7 vdd  vdds gnd gnds T6_MemCell Wn=Wm#
+
+*Cload0 word0 0 1f
+*Cload1 word1 0 1f
+
+* Input Stimuli 
+Vword0	word0   0 PWL(0n 0 9n 0 10n pwr 19n pwr 20n 0 49n 0 50n pwr 59n pwr 60n 0)
+Vword1	word1   0 PWL(0n 0 29n 0 30n pwr 39n pwr 40n 0 69n 0 70n pwr 79n pwr 80n 0)
+Vword2	word2   0 PWL(0n 0 9n 0 10n pwr 19n pwr 20n 0 89n 0 90n pwr 99n pwr 100n 0)
+Vword3	word3   0 PWL(0n 0 29n 0 30n pwr 39n pwr 40n 0 109n 0 110n pwr 119n pwr 120n 0)
+Vword4	word4   0 PWL(0n 0 9n 0 10n pwr 19n pwr 20n 0 129n 0 130n pwr 139n pwr 140n 0)
+Vword5	word5   0 PWL(0n 0 29n 0 30n pwr 39n pwr 40n 0 149n 0 150n pwr 159n pwr 160n 0)
+Vword6	word6   0 PWL(0n 0 9n 0 10n pwr 19n pwr 20n 0 169n 0 170n pwr 179n pwr 180n 0)
+Vword7	word7   0 PWL(0n 0 29n 0 30n pwr 39n pwr 40n 0 189n 0 190n pwr 199n pwr 200n 0)
+
+Vinbit	Vinbit	0 PWL(0n pwr 24n pwr 25n 0 39n 0 40n pwr)
+Vinbitn Vinbitn 0 PWL(0n 0   24n 0   25n pwr)
+Venbit  enbit   0 PWL(0n pwr 48n pwr 49n 0 59n 0 60n pwr 68n pwr 69n 0 79n 0 80n pwr 88n pwr 89n 0 99n 0 100n pwr 108n pwr 109n 0 119n 0 120n pwr 128n pwr 129n 0 139n 0 140n pwr 148n pwr 149n 0 159n 0 160n pwr 168n pwr 169n 0 179n 0 180n pwr 188n pwr 189n 0)
+Venbitn enbitn  0 PWL(0n pwr 48n pwr 49n 0 59n 0 60n pwr 68n pwr 69n 0 79n 0 80n pwr 88n pwr 89n 0 99n 0 100n pwr 108n pwr 109n 0 119n 0 120n pwr 128n pwr 129n 0 139n 0 140n pwr 148n pwr 149n 0 159n 0 160n pwr 168n pwr 169n 0 179n 0 180n pwr 188n pwr 189n 0)
+
+.tran 0.10ns 210ns START=0 
+
+.option post
+
+.end

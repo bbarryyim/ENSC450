@@ -1,0 +1,196 @@
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : reference
+Design : assignment1pip
+Version: Z-2007.03-SP5
+Date   : Fri Sep 20 14:37:14 2013
+****************************************
+
+Attributes:
+    b - black box (unknown)
+   bo - allows boundary optimization
+    d - dont_touch
+   mo - map_only
+    h - hierarchical
+    n - noncombinational
+    r - removable
+    s - synthetic operator
+    u - contains unmapped logic
+
+Reference          Library       Unit Area   Count    Total Area   Attributes
+-----------------------------------------------------------------------------
+AND2_X1            NangateOpenCellLibrary
+                                  1.064000       1      1.064000  
+AND2_X2            NangateOpenCellLibrary
+                                  1.330000       1      1.330000  
+AOI22_X1           NangateOpenCellLibrary
+                                  1.330000      14     18.620001  
+CLKBUF_X1          NangateOpenCellLibrary
+                                  0.798000       1      0.798000  
+DFFR_X1            NangateOpenCellLibrary
+                                  5.320000      47    250.040008  n
+DFFR_X2            NangateOpenCellLibrary
+                                  5.852000       1      5.852000  n
+FA_X1              NangateOpenCellLibrary
+                                  4.256000      10     42.560000  r
+HA_X1              NangateOpenCellLibrary
+                                  2.660000       6     15.960001  r
+INV_X1             NangateOpenCellLibrary
+                                  0.532000      17      9.044000  
+NAND2_X1           NangateOpenCellLibrary
+                                  0.798000       2      1.596000  
+assignment1pip_DW01_add_1       102.144001       1    102.144001  h
+assignment1pip_DW01_sub_1        65.968001       1     65.968001  h
+assignment1pip_DW01_sub_2       129.542003       1    129.542003  h
+assignment1pip_DW_mult_uns_1     72.884001       1     72.884001  h
+-----------------------------------------------------------------------------
+Total 14 references                                   717.402015
+1
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+        -transition_time
+        -capacitance
+Design : assignment1pip
+Version: Z-2007.03-SP5
+Date   : Fri Sep 20 14:37:14 2013
+****************************************
+
+Operating Conditions: slow   Library: NangateOpenCellLibrary
+Wire Load Model Mode: top
+
+  Startpoint: RegDiff_reg[0]
+              (rising edge-triggered flip-flop clocked by CLK)
+  Endpoint: RZ_reg[15] (rising edge-triggered flip-flop clocked by CLK)
+  Path Group: CLK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  assignment1pip     5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                          Cap     Trans      Incr       Path
+  ------------------------------------------------------------------------------------
+  clock CLK (rise edge)                                             0.00       0.00
+  clock network delay (ideal)                                       0.00       0.00
+  RegDiff_reg[0]/CK (DFFR_X1)                             0.00      0.00       0.00 r
+  RegDiff_reg[0]/Q (DFFR_X1)                   12.83      0.04      0.30       0.30 f
+  sub_62/B[0] (assignment1pip_DW01_sub_2)                           0.00       0.30 f
+  sub_62/U55/ZN (NOR2_X4)                      12.85      0.09      0.20       0.50 r
+  sub_62/U54/ZN (INV_X4)                       11.54      0.02      0.09       0.59 f
+  sub_62/U51/Z (XOR2_X2)                        1.95      0.03      0.21       0.80 f
+  sub_62/DIFF[2] (assignment1pip_DW01_sub_2)                        0.00       0.80 f
+  U21/ZN (AOI22_X1)                             1.95      0.10      0.14       0.94 r
+  U20/ZN (INV_X1)                              13.08      0.04      0.10       1.04 f
+  add_66/A[2] (assignment1pip_DW01_add_1)                           0.00       1.04 f
+  add_66/U27/ZN (NOR2_X4)                       5.37      0.05      0.14       1.18 r
+  add_66/U62/ZN (OAI21_X1)                      6.28      0.04      0.09       1.27 f
+  add_66/U60/ZN (AOI21_X2)                      1.95      0.07      0.11       1.38 r
+  add_66/U59/ZN (INV_X1)                        3.05      0.02      0.05       1.43 f
+  add_66/U13/CO (FA_X1)                         3.05      0.05      0.28       1.72 f
+  add_66/U12/CO (FA_X1)                         3.05      0.05      0.30       2.01 f
+  add_66/U11/CO (FA_X1)                         6.52      0.06      0.32       2.34 f
+  add_66/U49/ZN (NAND2_X1)                      1.91      0.04      0.09       2.42 r
+  add_66/U51/ZN (NAND3_X1)                      3.05      0.03      0.08       2.51 f
+  add_66/U9/CO (FA_X1)                          3.05      0.05      0.29       2.80 f
+  add_66/U8/CO (FA_X1)                          3.05      0.05      0.30       3.09 f
+  add_66/U7/CO (FA_X1)                          3.05      0.05      0.30       3.39 f
+  add_66/U6/CO (FA_X1)                          3.05      0.05      0.30       3.69 f
+  add_66/U5/CO (FA_X1)                          3.05      0.05      0.30       3.98 f
+  add_66/U4/CO (FA_X1)                          3.05      0.05      0.30       4.28 f
+  add_66/U3/CO (FA_X1)                          3.91      0.05      0.30       4.59 f
+  add_66/U52/ZN (NAND2_X1)                      1.88      0.03      0.08       4.67 r
+  add_66/U54/ZN (NAND2_X1)                      1.40      0.02      0.05       4.71 f
+  add_66/SUM[15] (assignment1pip_DW01_add_1)                        0.00       4.71 f
+  RZ_reg[15]/D (DFFR_X1)                                  0.02      0.01       4.72 f
+  data arrival time                                                            4.72
+
+  clock CLK (rise edge)                                             5.00       5.00
+  clock network delay (ideal)                                       0.00       5.00
+  RZ_reg[15]/CK (DFFR_X1)                                           0.00       5.00 r
+  library setup time                                               -0.16       4.84
+  data required time                                                           4.84
+  ------------------------------------------------------------------------------------
+  data required time                                                           4.84
+  data arrival time                                                           -4.72
+  ------------------------------------------------------------------------------------
+  slack (MET)                                                                  0.12
+
+
+  Startpoint: reset (input port clocked by CLK)
+  Endpoint: RegDiff_reg[3]/RN
+            (internal path endpoint)
+  Path Group: default
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  assignment1pip     5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                           Cap     Trans      Incr       Path
+  ---------------------------------------------------------------------
+  input external delay                               0.80       0.80 f
+  reset (in)                     3.99      1.00      0.00       0.80 f
+  U38/ZN (INV_X1)               59.85      0.50      1.15       1.95 r
+  RegDiff_reg[3]/RN (DFFR_X2)              0.50      0.04       1.99 r
+  data arrival time                                             1.99
+
+  max_delay                                         20.00      20.00
+  output external delay                              0.00      20.00
+  data required time                                           20.00
+  ---------------------------------------------------------------------
+  data required time                                           20.00
+  data arrival time                                            -1.99
+  ---------------------------------------------------------------------
+  slack (MET)                                                  18.01
+
+
+1
+Loading db file '/ensc/fac1/fcampi/SOCLAB/LIBRARIES/NangateOpenCellLibrary_PDKv1_3_v2010_12/Front_End/DB/NangateOpenCellLibrary_slow.db'
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+Warning: Design has unannotated primary inputs. (PWR-414)
+Warning: Design has unannotated sequential cell outputs. (PWR-415)
+ 
+****************************************
+Report : power
+        -analysis_effort low
+Design : assignment1pip
+Version: Z-2007.03-SP5
+Date   : Fri Sep 20 14:37:15 2013
+****************************************
+
+
+Library(s) Used:
+
+    NangateOpenCellLibrary (File: /ensc/fac1/fcampi/SOCLAB/LIBRARIES/NangateOpenCellLibrary_PDKv1_3_v2010_12/Front_End/DB/NangateOpenCellLibrary_slow.db)
+
+
+Operating Conditions: slow   Library: NangateOpenCellLibrary
+Wire Load Model Mode: top
+
+Design        Wire Load Model            Library
+------------------------------------------------
+assignment1pip         5K_hvratio_1_1    NangateOpenCellLibrary
+
+
+Global Operating Voltage = 0.95 
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000ff
+    Time Units = 1ns
+    Dynamic Power Units = 1uW    (derived from V,C,T units)
+    Leakage Power Units = 1nW
+
+
+  Cell Internal Power  =  99.9768 uW   (70%)
+  Net Switching Power  =  43.0731 uW   (30%)
+                         ---------
+Total Dynamic Power    = 143.0499 uW  (100%)
+
+Cell Leakage Power     =  10.6770 uW
+
+1

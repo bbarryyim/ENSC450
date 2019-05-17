@@ -1,0 +1,147 @@
+NOT:
+Wp/Wn ratio : 4/1
+Width of PMOS: 880nm
+Width of NMOS: 220nm
+Area of Cell: 5um^2
+Worst Case Capacitance: 4fF
+
+1fF,0.05ns:
+   tpdfall_not=  8.2433E-11  targ=  3.5107E-08   trig=  3.5025E-08
+   tpdrise_not=  6.1164E-11  targ=  2.0086E-08   trig=  2.0025E-08
+   totrfall_not=  1.0336E-10  targ=  3.5168E-08   trig=  3.5065E-08
+   totrrise_not=  8.6668E-11  targ=  2.0141E-08   trig=  2.0054E-08
+
+5fF,0.05ns:
+   tpdfall_not=  1.5433E-10  targ=  3.5179E-08   trig=  3.5025E-08
+   tpdrise_not=  1.1632E-10  targ=  2.0141E-08   trig=  2.0025E-08
+   totrfall_not=  2.4881E-10  targ=  3.5329E-08   trig=  3.5080E-08
+   totrrise_not=  1.9906E-10  targ=  2.0264E-08   trig=  2.0065E-08
+
+1fF,0.1ns:
+   tpdfall_not=  9.6645E-11  targ=  3.5147E-08   trig=  3.5050E-08
+   tpdrise_not=  7.4514E-11  targ=  2.0125E-08   trig=  2.0050E-08
+   totrfall_not=  1.0383E-10  targ=  3.5208E-08   trig=  3.5104E-08
+   totrrise_not=  9.1807E-11  targ=  2.0179E-08   trig=  2.0087E-08
+
+5fF,0.1ns:
+   tpdfall_not=  1.6440E-10  targ=  3.5214E-08   trig=  3.5050E-08
+   tpdrise_not=  1.2956E-10  targ=  2.0180E-08   trig=  2.0050E-08
+   totrfall_not=  2.4568E-10  targ=  3.5360E-08   trig=  3.5115E-08
+   totrrise_not=  2.0007E-10  targ=  2.0304E-08   trig=  2.0104E-08
+
+
+NAND:
+Wp/Wn ratio : 4/2
+Width of PMOS: 880nm
+Width of NMOS: 440nm
+Area of Cell: 12um^2
+Worst Case Capacitance(A): 4pF
+Worst Case Capacitance(B): 2pF
+
+****A***
+1fF,0.05ns:
+   tpdfall_nanda=  1.1749E-10  targ=  3.5142E-08   trig=  3.5025E-08
+   tpdrise_nanda=  8.7421E-11  targ=  2.0112E-08   trig=  2.0025E-08
+   totrfall_nanda=  1.6710E-10  targ=  3.5240E-08   trig=  3.5073E-08
+   totrrise_nanda=  1.3878E-10  targ=  2.0201E-08   trig=  2.0062E-08
+
+5fF,0.05ns:
+   tpdfall_nanda=  1.9476E-10  targ=  3.5220E-08   trig=  3.5025E-08
+   tpdrise_nanda=  1.4296E-10  targ=  2.0168E-08   trig=  2.0025E-08
+   totrfall_nanda=  3.1181E-10  targ=  3.5400E-08   trig=  3.5088E-08
+   totrrise_nanda=  2.4675E-10  targ=  2.0320E-08   trig=  2.0074E-08
+
+1fF,0.1ns:
+   tpdfall_nanda=  1.3065E-10  targ=  3.5181E-08   trig=  3.5050E-08
+   tpdrise_nanda=  1.0045E-10  targ=  2.0150E-08   trig=  2.0050E-08
+   totrfall_nanda=  1.6681E-10  targ=  3.5278E-08   trig=  3.5111E-08
+   totrrise_nanda=  1.3750E-10  targ=  2.0238E-08   trig=  2.0100E-08
+
+5fF,0.1ns:
+   tpdfall_nanda=  2.0065E-10  targ=  3.5251E-08   trig=  3.5050E-08
+   tpdrise_nanda=  1.5556E-10  targ=  2.0206E-08   trig=  2.0050E-08
+   totrfall_nanda=  3.0827E-10  targ=  3.5431E-08   trig=  3.5123E-08
+   totrrise_nanda=  2.4310E-10  targ=  2.0355E-08   trig=  2.0112E-08
+
+****B***
+1fF,0.05ns:
+   tpdfall_nandb=  1.4072E-10  targ=  3.5166E-08   trig=  3.5025E-08
+   tpdrise_nandb=  1.0116E-10  targ=  2.0126E-08   trig=  2.0025E-08
+   totrfall_nandb=  1.6951E-10  targ=  3.5264E-08   trig=  3.5094E-08
+   totrrise_nandb=  1.5975E-10  targ=  2.0220E-08   trig=  2.0060E-08
+
+5fF,0.05ns:
+   tpdfall_nandb=  2.1248E-10  targ=  3.5237E-08   trig=  3.5025E-08
+   tpdrise_nandb=  1.5844E-10  targ=  2.0183E-08   trig=  2.0025E-08
+   totrfall_nandb=  3.1794E-10  targ=  3.5426E-08   trig=  3.5108E-08
+   totrrise_nandb=  2.7402E-10  targ=  2.0346E-08   trig=  2.0072E-08
+
+1fF,0.1ns:
+   tpdfall_nandb=  1.5133E-10  targ=  3.5201E-08   trig=  3.5050E-08
+   tpdrise_nandb=  1.1617E-10  targ=  2.0166E-08   trig=  2.0050E-08
+   totrfall_nandb=  1.6988E-10  targ=  3.5302E-08   trig=  3.5132E-08
+   totrrise_nandb=  1.5959E-10  targ=  2.0260E-08   trig=  2.0101E-08
+
+
+5fF,0.1ns:
+   tpdfall_nandb=  2.2543E-10  targ=  3.5275E-08   trig=  3.5050E-08
+   tpdrise_nandb=  1.6613E-10  targ=  2.0216E-08   trig=  2.0050E-08
+   totrfall_nandb=  3.1763E-10  targ=  3.5465E-08   trig=  3.5147E-08
+   totrrise_nandb=  2.7119E-10  targ=  2.0376E-08   trig=  2.0105E-08
+
+NOR:
+Wp/Wn ratio : 8/1
+Width of PMOS: 1760nm
+Width of NMOS: 220nm
+Area of Cell: 18um^2
+Worst Case Capacitance A : 8fF
+Worst Case Capacitance B : 1fF
+***A***
+1fF,0.05ns:
+   tpdfall_nora=  2.2388E-10  targ=  3.5249E-08   trig=  3.5025E-08
+   tpdrise_nora=  1.4127E-10  targ=  2.0166E-08   trig=  2.0025E-08
+   totrfall_nora=  2.6728E-10  targ=  3.5373E-08   trig=  3.5106E-08
+   totrrise_nora=  1.7953E-10  targ=  2.0284E-08   trig=  2.0104E-08
+
+5fF,0.05ns:
+   tpdfall_nora=  3.0049E-10  targ=  3.5325E-08   trig=  3.5025E-08
+   tpdrise_nora=  2.0002E-10  targ=  2.0225E-08   trig=  2.0025E-08
+   totrfall_nora=  4.1813E-10  targ=  3.5541E-08   trig=  3.5122E-08
+   totrrise_nora=  2.8713E-10  targ=  2.0407E-08   trig=  2.0120E-08
+
+1fF,0.1ns:
+   tpdfall_nora=  2.3723E-10  targ=  3.5287E-08   trig=  3.5050E-08
+   tpdrise_nora=  1.5555E-10  targ=  2.0206E-08   trig=  2.0050E-08
+   totrfall_nora=  2.6579E-10  targ=  3.5410E-08   trig=  3.5144E-08
+   totrrise_nora=  1.7721E-10  targ=  2.0321E-08   trig=  2.0144E-08
+
+5fF,0.1ns:
+   tpdfall_nora=  3.0940E-10  targ=  3.5359E-08   trig=  3.5050E-08
+   tpdrise_nora=  2.1508E-10  targ=  2.0265E-08   trig=  2.0050E-08
+   totrfall_nora=  4.1247E-10  targ=  3.5567E-08   trig=  3.5155E-08
+   totrrise_nora=  2.9533E-10  targ=  2.0454E-08   trig=  2.0159E-08
+
+****B***
+1fF,0.05ns:
+   tpdfall_norb=  1.2895E-10  targ=  3.5154E-08   trig=  3.5025E-08
+   tpdrise_norb=  8.8248E-11  targ=  2.0113E-08   trig=  2.0025E-08
+   totrfall_norb=  1.6423E-10  targ=  3.5250E-08   trig=  3.5086E-08
+   totrrise_norb=  1.6342E-10  targ=  2.0225E-08   trig=  2.0061E-08
+
+5fF,0.05ns:
+   tpdfall_norb=  2.0175E-10  targ=  3.5227E-08   trig=  3.5025E-08
+   tpdrise_norb=  1.4524E-10  targ=  2.0170E-08   trig=  2.0025E-08
+   totrfall_norb=  3.0309E-10  targ=  3.5405E-08   trig=  3.5102E-08
+   totrrise_norb=  2.7582E-10  targ=  2.0345E-08   trig=  2.0070E-08
+
+1fF,0.1ns:
+   tpdfall_norb=  1.4008E-10  targ=  3.5190E-08   trig=  3.5050E-08
+   tpdrise_norb=  9.9945E-11  targ=  2.0150E-08   trig=  2.0050E-08
+   totrfall_norb=  1.6404E-10  targ=  3.5287E-08   trig=  3.5123E-08
+   totrrise_norb=  1.6333E-10  targ=  2.0264E-08   trig=  2.0100E-08
+
+5fF,0.1ns:
+   tpdfall_norb=  2.1216E-10  targ=  3.5262E-08   trig=  3.5050E-08
+   tpdrise_norb=  1.5739E-10  targ=  2.0207E-08   trig=  2.0050E-08
+   totrfall_norb=  3.0201E-10  targ=  3.5440E-08   trig=  3.5138E-08
+   totrrise_norb=  2.7974E-10  targ=  2.0389E-08   trig=  2.0109E-08

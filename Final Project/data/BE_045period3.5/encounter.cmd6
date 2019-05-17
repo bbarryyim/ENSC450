@@ -1,0 +1,344 @@
+#######################################################
+#                                                     #
+#  Encounter Command Logging File                     #
+#  Created on Thu Nov 14 11:18:42 2013                #
+#                                                     #
+#######################################################
+
+#@(#)CDS: Encounter v09.10-p004_1 (32bit) 12/02/2009 20:50 (Linux 2.6)
+#@(#)CDS: NanoRoute v09.10-p020 NR091118-1115/USR62-UB (database version 2.30, 86.1.1) {superthreading v1.13}
+#@(#)CDS: CeltIC v09.10-p001_1 (32bit) 11/20/2009 16:06:17 (Linux 2.6.9-78.0.25.ELsmp)
+#@(#)CDS: CTE 09.10-p003_1 (32bit) Dec  2 2009 16:44:23 (Linux 2.6.9-78.ELsmp)
+#@(#)CDS: CPE v09.10-p005
+
+encMessage warning 0
+encMessage debug 0
+encMessage info 0
+restoreDesign ./DBS/04-postPlaceOpt.enc.dat RegFile
+setDrawView fplan
+encMessage warning 1
+encMessage debug 0
+encMessage info 1
+setDrawView ameba
+setDrawView place
+setDrawView fplan
+setDrawView ameba
+setDrawView place
+zoomBox 37.753 73.729 45.267 67.744
+violationBrowser -all -no_display_false
+selectInst {RegX_16/Reg_reg[13]}
+deselectAll
+selectInst {RegX_16/Reg_reg[13]}
+deselectAll
+selectWire 39.2000 70.7350 40.7100 70.8050 3 N300
+deselectAll
+selectInst {RegX_16/Reg_reg[13]}
+verifyGeometry
+deselectAll
+selectInst U1850
+zoomBox 4.31 60.875 5.38 62.045
+deselectAll
+selectWire 4.1800 0.6600 4.9800 88.6600 10 VSS
+zoomOut
+deselectAll
+selectWire 4.8100 61.9150 7.5400 61.9850 3 clk
+zoomBox 4.329 61.194 4.705 60.873
+deselectAll
+selectWire 4.1800 0.6600 4.9800 88.6600 10 VSS
+fit
+deselectAll
+selectWire 56.9800 2.2600 57.7800 87.0600 10 VDD
+setLayerPreference allM1Cont -isVisible 0
+setLayerPreference allM1 -isVisible 0
+setLayerPreference allM2Cont -isVisible 0
+setLayerPreference allM2 -isVisible 0
+setLayerPreference allM3Cont -isVisible 0
+setLayerPreference allM3 -isVisible 0
+setLayerPreference allM4Cont -isVisible 0
+setLayerPreference allM4 -isVisible 0
+setLayerPreference allM5Cont -isVisible 0
+setLayerPreference allM5 -isVisible 0
+setLayerPreference allM6Cont -isVisible 0
+setLayerPreference allM6 -isVisible 0
+setLayerPreference allM7Cont -isVisible 0
+deselectAll
+zoomBox 48.705 45.075 59.657 37.562
+selectWire 58.9550 42.5700 59.9150 42.9700 7 FE_OFN4_write
+setLayerPreference allM7 -isVisible 0
+setLayerPreference allM8Cont -isVisible 0
+setLayerPreference allM8 -isVisible 0
+setLayerPreference allM9Cont -isVisible 0
+setLayerPreference allM9 -isVisible 0
+setLayerPreference allM10Cont -isVisible 0
+setLayerPreference allM10 -isVisible 0
+setLayerPreference allM3 -isVisible 1
+setLayerPreference allM3 -isVisible 0
+setLayerPreference allM4 -isVisible 1
+deselectAll
+selectWire 57.9650 44.1000 58.1050 47.1800 4 clk
+setLayerPreference allM1Cont -isVisible 1
+setLayerPreference allM1 -isVisible 1
+setLayerPreference allM2Cont -isVisible 1
+setLayerPreference allM2 -isVisible 1
+setLayerPreference allM3Cont -isVisible 1
+setLayerPreference allM3 -isVisible 1
+setLayerPreference allM4Cont -isVisible 1
+setLayerPreference allM5Cont -isVisible 1
+setLayerPreference allM5 -isVisible 1
+setLayerPreference allM6Cont -isVisible 1
+setLayerPreference allM6 -isVisible 1
+setLayerPreference allM7Cont -isVisible 1
+setLayerPreference allM7 -isVisible 1
+setLayerPreference allM8Cont -isVisible 1
+setLayerPreference allM8 -isVisible 1
+setLayerPreference allM9Cont -isVisible 1
+setLayerPreference allM9 -isVisible 1
+setLayerPreference allM10Cont -isVisible 1
+setLayerPreference allM10 -isVisible 1
+fit
+setCTSMode -traceDPinAsLeaf true
+specifyClockTree -file inputs/RegFile.cts
+ckSynthesis -report results/RegFile.ctsrpt -macromodel temp/macromodel.ctsmdl -fix_added_buffers
+saveClockNets -output temp/clock_nets.ctsntf
+saveNetlist results/verilog/RegFile.cts.v
+saveDesign ./DBS/05-cts.enc -relativePath -compress
+trialRoute -highEffort
+extractRC
+setAnalysisMode -checkType hold -asyncChecks async -skew true -clockPropagation sdcControl
+timeDesign -slackReports -pathreports -expandReg2Reg -expandedViews -reportOnly -numPaths 10 -hold -outDir ./results/timing/05-cts-timeDesign.hold
+report_timing -net -format {instance arc cell slew net annotation load delay arrival} -max_paths 10 >  results/timing/05-cts_hold.rpt
+setAnalysisMode -checkType setup -asyncChecks async -skew true -clockPropagation sdcControl
+timeDesign -drvReports -slackReports -pathreports -expandReg2Reg -expandedViews -reportOnly -numPaths 10 -outDir ./results/timing/05-cts-timeDesign.setup
+report_timing -net -format {instance arc cell slew net annotation load delay arrival} -max_paths 10 >  results/timing/05-cts_setup.rpt
+summaryReport -outfile results/summary/05-cts.rpt
+initECO temp/ipo2_setup.txt
+trialRoute -highEffort
+setExtractRCMode -engine preRoute
+extractRC
+optDesign -postCTS
+endECO
+cleanupECO
+initECO temp/ipo2_hold.txt
+setExtractRCMode -engine postRoute -effortLevel low
+extractRC
+optDesign -postCTS -hold
+endECO
+cleanupECO
+saveNetlist results/verilog/RegFile.postcts.v
+saveDesign ./DBS/06-postCtsOpt.enc -relativePath -compress
+setExtractRCMode -engine postRoute -effortLevel low
+extractRC
+setAnalysisMode -checkType hold -asyncChecks async -skew true -clockPropagation sdcControl
+timeDesign -slackReports -pathreports -expandReg2Reg -expandedViews -reportOnly -numPaths 10 -hold -outDir results/timing/06-postCTSOpt-timeDesign.hold
+report_timing -net -format {instance arc cell slew net annotation load delay arrival} -max_paths 10 >  results/timing/06-postCtsOpt_hold.rpt
+setAnalysisMode -checkType setup -asyncChecks async -skew true -clockPropagation sdcControl
+timeDesign -drvReports -slackReports -pathreports -expandReg2Reg -expandedViews -reportOnly -numPaths 10 -outDir ./results/timing/06-postCTSOpt-timeDesign.setup
+report_timing -net -format {instance arc cell slew net annotation load delay arrival} -max_paths 10 >  results/timing/06-postCtsOpt_setup.rpt
+summaryReport -outfile results/summary/06-postCTSOpt.rpt
+setAttribute -net clk -weight 100
+setAttribute -net clk -avoid_detour true
+setAttribute -net clk -bottom_preferred_routing_layer 2
+setAttribute -net clk -top_preferred_routing_layer 4
+setNanoRouteMode -quiet -drouteFixAntenna false
+setNanoRouteMode -quiet -routeInsertAntennaDiode false
+setNanoRouteMode -quiet -routeAntennaCellName default
+setNanoRouteMode -quiet -routeWithTimingDriven true
+setNanoRouteMode -quiet -routeWithSiDriven true
+setNanoRouteMode -quiet -routeSiEffort medium
+setNanoRouteMode -quiet -routeWithSiPostRouteFix false
+setNanoRouteMode -quiet -drouteAutoStop false
+setNanoRouteMode -quiet -routeSelectedNetOnly false
+setNanoRouteMode -quiet -drouteStartIteration default
+setNanoRouteMode -quiet -routeTopRoutingLayer 5
+setNanoRouteMode -quiet -routeBottomRoutingLayer 1
+setNanoRouteMode -quiet -drouteEndIteration default
+setNanoRouteMode -quiet -routeUseBlockageForAutoGgrid true
+globalDetailRoute
+saveNetlist results/verilog/RegFile.route.v
+saveDesign ./DBS/07-route.enc -relativePath -compress
+setAnalysisMode -analysisType single -checkType setup -skew true -clockPropagation sdcControl
+setExtractRCMode -engine postRoute -effortLevel low
+extractRC
+setAnalysisMode -checkType hold -skew true -clockPropagation sdcControl
+timeDesign -slackReports -pathreports -expandReg2Reg -expandedViews -reportOnly -numPaths 10 -hold -outDir results/timing/07-route-timeDesign.hold
+report_timing -net -format {instance arc cell slew net annotation load delay arrival} -max_paths 10 > results/timing/07-route.hold.rpt
+setAnalysisMode -analysisType single -checkType setup -skew true -clockPropagation sdcControl
+timeDesign -drvReports -slackReports -pathreports -expandReg2Reg -expandedViews -reportOnly -numPaths 10 -outDir results/timing/07-route-timeDesign.setup
+report_timing -net -format {instance arc cell slew net annotation load delay arrival} -max_paths 10 > results/timing/07-route.setup.rpt
+summaryReport -outfile results/summary/07-route.rpt
+selectWire 10.3200 24.6750 10.3900 25.8650 2 {dataIn[2]}
+deselectAll
+selectWire 66.5800 2.2600 67.3800 87.0600 10 VDD
+deselectAll
+selectWire 42.8450 45.5000 48.0250 45.6400 5 n1214
+deselectAll
+selectInst U1742
+deselectAll
+addFiller -cell {FILLCELL_X32 FILLCELL_X16 FILLCELL_X8 FILLCELL_X4 FILLCELL_X2 FILLCELL_X1} -prefix FILL
+fillNotch -reportfile results/fillnotch.rpt
+verifyConnectivity
+verifyGeometry -reportfile results/geometry.rpt -noSameNet -noMinSpacing
+setExtractRCMode -engine postRoute -effortLevel low
+extractRC
+setAnalysisMode -checkType hold -skew true -clockPropagation sdcControl
+timeDesign -slackReports -pathreports -expandReg2Reg -expandedViews -reportOnly -numPaths 10 -hold -outDir results/timing/08-finishing-timeDesign.hold
+report_timing -net -format {instance arc cell slew net annotation load delay arrival} -max_paths 10 > results/timing/08-finishing.hold.rpt
+setAnalysisMode -analysisType single -checkType setup -skew true -clockPropagation sdcControl
+timeDesign -drvReports -slackReports -pathreports -expandReg2Reg -expandedViews -reportOnly -numPaths 10 -outDir results/timing/08-finishing-timeDesign.setup
+report_timing -net -format {instance arc cell slew net annotation load delay arrival} -max_paths 10 > results/timing/08-finishing.setup.rpt
+defOut -placement -routing -floorplan results/RegFile.def
+lefOut results/RegFile.lef
+saveNetlist -phys -excludeLeafCell results/verilog/RegFile.phys.v
+saveNetlist -excludeLeafCell results/verilog/RegFile.final.v
+setExtractRCMode -engine postRoute
+extractRC
+rcOut -spef results/RegFile.spef
+do_extract_model results/$TOP.tlf
+saveDesign DBS/RegFile.final.enc
+summaryReport -outfile results/summary/08-finishing.rpt
+selectWire 20.7250 3.7800 20.8650 35.5600 4 {outA[2]}
+deselectAll
+selectWire 47.3800 2.2600 48.1800 87.0600 10 VDD
+setLayerPreference allM0 -isVisible 0
+setLayerPreference allM1Cont -isVisible 0
+setLayerPreference allM1 -isVisible 0
+setLayerPreference allM2Cont -isVisible 0
+setLayerPreference allM2 -isVisible 0
+setLayerPreference allM3Cont -isVisible 0
+setLayerPreference allM3 -isVisible 0
+setLayerPreference allM4Cont -isVisible 0
+setLayerPreference allM4 -isVisible 0
+setLayerPreference allM5Cont -isVisible 0
+setLayerPreference allM5 -isVisible 0
+setLayerPreference allM6Cont -isVisible 0
+setLayerPreference allM6 -isVisible 0
+setLayerPreference allM7Cont -isVisible 0
+setLayerPreference allM7 -isVisible 0
+setLayerPreference allM8Cont -isVisible 0
+setLayerPreference allM8 -isVisible 0
+setLayerPreference allM9Cont -isVisible 0
+setLayerPreference allM9 -isVisible 0
+setLayerPreference allM10Cont -isVisible 0
+setLayerPreference allM10 -isVisible 0
+setLayerPreference allM0 -isVisible 1
+setLayerPreference allM1Cont -isVisible 1
+setLayerPreference allM1 -isVisible 1
+setLayerPreference allM2Cont -isVisible 1
+setLayerPreference allM2 -isVisible 1
+setLayerPreference allM3Cont -isVisible 1
+setLayerPreference allM3 -isVisible 1
+setLayerPreference allM4Cont -isVisible 1
+setLayerPreference allM4 -isVisible 1
+setLayerPreference allM5Cont -isVisible 1
+setLayerPreference allM5 -isVisible 1
+setLayerPreference allM6Cont -isVisible 1
+setLayerPreference allM6 -isVisible 1
+setLayerPreference allM7Cont -isVisible 1
+setLayerPreference allM7 -isVisible 1
+setLayerPreference allM8Cont -isVisible 1
+setLayerPreference allM8 -isVisible 1
+setLayerPreference allM9Cont -isVisible 1
+setLayerPreference allM9 -isVisible 1
+setLayerPreference allM10Cont -isVisible 1
+setLayerPreference allM10 -isVisible 1
+setLayerPreference cellBlkgObj -isVisible 1
+setLayerPreference cellBlkgObj -isVisible 0
+setLayerPreference violation -isSelectable 0
+setLayerPreference violation -isSelectable 1
+setLayerPreference violation -isVisible 0
+setLayerPreference violation -isVisible 1
+setDrawView fplan
+setDrawView ameba
+setDrawView place
+deselectAll
+selectWire 31.4000 45.6750 33.0000 45.7450 3 n579
+deselectAll
+selectInst {RegX_23/Reg_reg[15]}
+deselectAll
+man
+man 30
+windowSelect 33.046 71.264 55.800 57.059
+windowSelect 17.789 73.368 55.275 51.008
+windowSelect 10.424 74.026 61.720 41.013
+deselectAll
+zoomBox 22.261 67.055 53.959 50.220
+zoomBox 31.431 66.957 39.454 60.318
+zoomBox 31.941 66.374 34.962 64.323
+zoomOut
+zoomOut
+zoomOut
+zoomOut
+zoomOut
+zoomOut
+zoomBox 32.848 86.064 49.614 80.456
+zoomBox 41.816 90.441 46.373 88.559
+zoomBox 44.038 89.554 45.225 88.679
+panPage -1 0
+panPage -1 0
+panPage -1 0
+panPage -1 0
+panPage -1 0
+panPage -1 0
+panPage -1 0
+panPage -1 0
+panPage -1 0
+panPage -1 0
+panPage -1 0
+panPage 1 0
+panPage -1 0
+panPage -1 0
+panPage -1 0
+panPage -1 0
+panPage -1 0
+panPage -1 0
+panPage -1 0
+panPage -1 0
+panPage -1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+zoomOut
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+zoomBox 57.217 89.494 57.724 89.186
+panPage 1 0
+panPage 1 0
+zoomOut
+zoomOut
+zoomOut
+saveDesign RegFile.enc
+uiSetTool addWire
+zoomOut
+zoomOut
+zoomOut
+zoomOut
+zoomOut
+zoomOut
+zoomOut
+uiSetTool select
+zoomOut
+panPage 0 -1
+panPage 0 -1
+panPage 0 1
+panPage 0 1
+panPage 0 -1
+zoomOut
+panPage -1 0
+panPage 1 0
+zoomBox -2.151 90.356 92.540 -2.873
+saveDesign ../../Desktop/Final
+selectWire 71.3800 0.6600 72.1800 88.6600 10 VSS

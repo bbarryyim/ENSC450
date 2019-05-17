@@ -1,0 +1,185 @@
+# //  ModelSim SE 6.5a Mar 27 2009 Linux 2.6.18-371.1.2.el5PAE
+# //
+# //  Copyright 1991-2009 Mentor Graphics Corporation
+# //              All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND 
+# //  PROPRIETARY INFORMATION WHICH IS THE PROPERTY
+# //  OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
+# //  AND IS SUBJECT TO LICENSE TERMS.
+# //
+# vsim tb_16bitRegFile 
+# ** Note: (vsim-3812) Design is being optimized...
+# Loading std.standard
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.tb_16bitregfile(rtl)#1
+# Loading work.RegFile(fast)
+# Loading work.INV_X2(fast)
+# Loading work.OR2_X2(fast)
+# Loading work.OAI22_X1(fast)
+# Loading work.INV_X1(fast)
+# Loading work.AOI22_X1(fast)
+# Loading work.NAND2_X1(fast)
+# Loading work.NOR4_X1(fast)
+# Loading work.OAI221_X1(fast)
+# Loading work.AND2_X1(fast)
+# Loading work.NOR2_X1(fast)
+# Loading work.DFFR_X1(fast)
+# Loading work.OAI21_X1(fast)
+# Loading work.CLKBUF_X3(fast)
+# Loading work.CLKBUF_X2(fast)
+# Loading work.CLKBUF_X1(fast)
+# Loading work.OR2_X1(fast)
+source scripts/simulate.tcl
+# vsim -novopt tb_16bitRegFile 
+# Loading std.standard
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.tb_16bitregfile(rtl)
+# Refreshing /ensc/grad1/cmc-14/Finalproject/sim/work.RegFile
+# Loading work.RegFile
+# Refreshing /ensc/grad1/cmc-14/Finalproject/sim/work.INV_X2
+# Loading work.INV_X2
+# Refreshing /ensc/grad1/cmc-14/Finalproject/sim/work.OR2_X2
+# Loading work.OR2_X2
+# Refreshing /ensc/grad1/cmc-14/Finalproject/sim/work.OAI22_X1
+# Loading work.OAI22_X1
+# Refreshing /ensc/grad1/cmc-14/Finalproject/sim/work.INV_X1
+# Loading work.INV_X1
+# Refreshing /ensc/grad1/cmc-14/Finalproject/sim/work.AOI22_X1
+# Loading work.AOI22_X1
+# Refreshing /ensc/grad1/cmc-14/Finalproject/sim/work.NAND2_X1
+# Loading work.NAND2_X1
+# Refreshing /ensc/grad1/cmc-14/Finalproject/sim/work.NOR4_X1
+# Loading work.NOR4_X1
+# Refreshing /ensc/grad1/cmc-14/Finalproject/sim/work.OAI221_X1
+# Loading work.OAI221_X1
+# Refreshing /ensc/grad1/cmc-14/Finalproject/sim/work.AND2_X1
+# Loading work.AND2_X1
+# Refreshing /ensc/grad1/cmc-14/Finalproject/sim/work.NOR2_X1
+# Loading work.NOR2_X1
+# Refreshing /ensc/grad1/cmc-14/Finalproject/sim/work.SingleReg_31
+# Loading work.SingleReg_31
+# Refreshing /ensc/grad1/cmc-14/Finalproject/sim/work.DFFR_X1
+# Loading work.DFFR_X1
+# Refreshing /ensc/grad1/cmc-14/Finalproject/sim/work.OAI21_X1
+# Loading work.OAI21_X1
+# Refreshing /ensc/grad1/cmc-14/Finalproject/sim/work.CLKBUF_X3
+# Loading work.CLKBUF_X3
+# Refreshing /ensc/grad1/cmc-14/Finalproject/sim/work.SingleReg_30
+# Loading work.SingleReg_30
+# Refreshing /ensc/grad1/cmc-14/Finalproject/sim/work.SingleReg_29
+# Loading work.SingleReg_29
+# Refreshing /ensc/grad1/cmc-14/Finalproject/sim/work.SingleReg_28
+# Loading work.SingleReg_28
+# Refreshing /ensc/grad1/cmc-14/Finalproject/sim/work.SingleReg_27
+# Loading work.SingleReg_27
+# Refreshing /ensc/grad1/cmc-14/Finalproject/sim/work.SingleReg_26
+# Loading work.SingleReg_26
+# Refreshing /ensc/grad1/cmc-14/Finalproject/sim/work.SingleReg_25
+# Loading work.SingleReg_25
+# Refreshing /ensc/grad1/cmc-14/Finalproject/sim/work.SingleReg_24
+# Loading work.SingleReg_24
+# Refreshing /ensc/grad1/cmc-14/Finalproject/sim/work.SingleReg_23
+# Loading work.SingleReg_23
+# Refreshing /ensc/grad1/cmc-14/Finalproject/sim/work.SingleReg_22
+# Loading work.SingleReg_22
+# Refreshing /ensc/grad1/cmc-14/Finalproject/sim/work.SingleReg_21
+# Loading work.SingleReg_21
+# Refreshing /ensc/grad1/cmc-14/Finalproject/sim/work.SingleReg_20
+# Loading work.SingleReg_20
+# Refreshing /ensc/grad1/cmc-14/Finalproject/sim/work.SingleReg_19
+# Loading work.SingleReg_19
+# Refreshing /ensc/grad1/cmc-14/Finalproject/sim/work.SingleReg_18
+# Loading work.SingleReg_18
+# Refreshing /ensc/grad1/cmc-14/Finalproject/sim/work.SingleReg_17
+# Loading work.SingleReg_17
+# Refreshing /ensc/grad1/cmc-14/Finalproject/sim/work.SingleReg_16
+# Loading work.SingleReg_16
+# Refreshing /ensc/grad1/cmc-14/Finalproject/sim/work.SingleReg_15
+# Loading work.SingleReg_15
+# Refreshing /ensc/grad1/cmc-14/Finalproject/sim/work.SingleReg_14
+# Loading work.SingleReg_14
+# Refreshing /ensc/grad1/cmc-14/Finalproject/sim/work.SingleReg_13
+# Loading work.SingleReg_13
+# Refreshing /ensc/grad1/cmc-14/Finalproject/sim/work.SingleReg_12
+# Loading work.SingleReg_12
+# Refreshing /ensc/grad1/cmc-14/Finalproject/sim/work.SingleReg_11
+# Loading work.SingleReg_11
+# Refreshing /ensc/grad1/cmc-14/Finalproject/sim/work.SingleReg_10
+# Loading work.SingleReg_10
+# Refreshing /ensc/grad1/cmc-14/Finalproject/sim/work.SingleReg_9
+# Loading work.SingleReg_9
+# Refreshing /ensc/grad1/cmc-14/Finalproject/sim/work.SingleReg_8
+# Loading work.SingleReg_8
+# Refreshing /ensc/grad1/cmc-14/Finalproject/sim/work.SingleReg_7
+# Loading work.SingleReg_7
+# Refreshing /ensc/grad1/cmc-14/Finalproject/sim/work.SingleReg_6
+# Loading work.SingleReg_6
+# Refreshing /ensc/grad1/cmc-14/Finalproject/sim/work.SingleReg_5
+# Loading work.SingleReg_5
+# Refreshing /ensc/grad1/cmc-14/Finalproject/sim/work.SingleReg_4
+# Loading work.SingleReg_4
+# Refreshing /ensc/grad1/cmc-14/Finalproject/sim/work.SingleReg_3
+# Loading work.SingleReg_3
+# Refreshing /ensc/grad1/cmc-14/Finalproject/sim/work.SingleReg_2
+# Loading work.SingleReg_2
+# Refreshing /ensc/grad1/cmc-14/Finalproject/sim/work.SingleReg_1
+# Loading work.SingleReg_1
+# Refreshing /ensc/grad1/cmc-14/Finalproject/sim/work.SingleReg_0
+# Loading work.SingleReg_0
+# Refreshing /ensc/grad1/cmc-14/Finalproject/sim/work.CLKBUF_X2
+# Loading work.CLKBUF_X2
+# Refreshing /ensc/grad1/cmc-14/Finalproject/sim/work.CLKBUF_X1
+# Loading work.CLKBUF_X1
+# Refreshing /ensc/grad1/cmc-14/Finalproject/sim/work.OR2_X1
+# Loading work.OR2_X1
+# Refreshing /ensc/grad1/cmc-14/Finalproject/sim/work.seq_DFFR_X1
+# Loading work.seq_DFFR_X1
+# Refreshing /ensc/grad1/cmc-14/Finalproject/sim/work.ng_xbuf
+# Loading work.ng_xbuf
+source scripts/compile_netlist.csh
+# Model Technology ModelSim SE vlog 6.5a Compiler 2009.03 Mar 27 2009
+# -- Compiling module SingleReg_30
+# -- Compiling module SingleReg_29
+# -- Compiling module SingleReg_28
+# -- Compiling module SingleReg_27
+# -- Compiling module SingleReg_26
+# -- Compiling module SingleReg_25
+# -- Compiling module SingleReg_24
+# -- Compiling module SingleReg_23
+# -- Compiling module SingleReg_22
+# -- Compiling module SingleReg_21
+# -- Compiling module SingleReg_20
+# -- Compiling module SingleReg_19
+# -- Compiling module SingleReg_18
+# -- Compiling module SingleReg_17
+# -- Compiling module SingleReg_16
+# -- Compiling module SingleReg_15
+# -- Compiling module SingleReg_14
+# -- Compiling module SingleReg_13
+# -- Compiling module SingleReg_12
+# -- Compiling module SingleReg_11
+# -- Compiling module SingleReg_10
+# -- Compiling module SingleReg_9
+# -- Compiling module SingleReg_8
+# -- Compiling module SingleReg_7
+# -- Compiling module SingleReg_6
+# -- Compiling module SingleReg_5
+# -- Compiling module SingleReg_4
+# -- Compiling module SingleReg_3
+# -- Compiling module SingleReg_2
+# -- Compiling module SingleReg_1
+# -- Compiling module SingleReg_0
+# -- Compiling module SingleReg_31
+# -- Compiling module RegFile
+# 
+# Top level modules:
+# 	RegFile
+# Model Technology ModelSim SE vcom 6.5a Compiler 2009.03 Mar 27 2009
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package numeric_std
+# -- Compiling entity tb_16bitregfile
+# -- Compiling architecture rtl of tb_16bitregfile

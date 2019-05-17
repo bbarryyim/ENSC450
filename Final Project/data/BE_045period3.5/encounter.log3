@@ -1,0 +1,364 @@
+Checking out Encounter license ...
+Encounter_Digital_Impl_Sys_XL 9.1 license checkout succeeded.
+You can run 2 CPU jobs with the base license that is currently checked out.
+If required, use the setMultiCpuUsage command to enable multi-CPU processing.
+This Encounter release has been compiled with OA version 22.04-p052.
+*******************************************************************
+*   Copyright (c)  Cadence Design Systems, Inc.  1996 - 2009.     *
+*                     All rights reserved.                        *
+*                                                                 *
+*                                                                 *
+*                                                                 *
+* This program contains confidential and trade secret information *
+* of Cadence Design Systems, Inc. and is protected by copyright   *
+* law and international treaties.  Any reproduction, use,         *
+* distribution or disclosure of this program or any portion of it,*
+* or any attempt to obtain a human-readable version of this       *
+* program, without the express, prior written consent of          *
+* Cadence Design Systems, Inc., is strictly prohibited.           *
+*                                                                 *
+*                 Cadence Design Systems, Inc.                    *
+*                    2655 Seely Avenue                            *
+*                   San Jose, CA 95134,  USA                      *
+*                                                                 *
+*                                                                 *
+*******************************************************************
+
+@(#)CDS: Encounter v09.10-p004_1 (32bit) 12/02/2009 20:50 (Linux 2.6)
+@(#)CDS: NanoRoute v09.10-p020 NR091118-1115/USR62-UB (database version 2.30, 86.1.1) {superthreading v1.13}
+@(#)CDS: CeltIC v09.10-p001_1 (32bit) 11/20/2009 16:06:17 (Linux 2.6.9-78.0.25.ELsmp)
+@(#)CDS: CTE 09.10-p003_1 (32bit) Dec  2 2009 16:44:23 (Linux 2.6.9-78.ELsmp)
+@(#)CDS: CPE v09.10-p005
+--- Starting "Encounter v09.10-p004_1" on Wed Nov 13 11:48:59 2013 (mem=57.3M) ---
+--- Running on esl2-5 (i686 w/Linux 2.6.18-371.1.2.el5PAE) ---
+This version was compiled on Wed Dec 2 20:50:10 PST 2009.
+Set DBUPerIGU to 1000.
+Set net toggle Scale Factor to 1.00
+Set Shrink Factor to 1.00000
+<CMD> set_global report_precision 5
+<CMD> loadConfig inputs/RegFile.conf
+Reading config file - inputs/RegFile.conf
+
+Loading Lef file /ensc/fac1/fcampi/SOCLAB/LIBRARIES/NangateOpenCellLibrary_PDKv1_3_v2010_12/Back_End/lef/NangateOpenCellLibrary.lef...
+Set DBUPerIGU to M2 pitch 380.
+Initializing default via types and wire widths ...
+
+Power Planner/ViaGen version 8.1.46 promoted on 02/17/2009.
+viaInitial starts at Wed Nov 13 11:49:35 2013
+viaInitial ends at Wed Nov 13 11:49:35 2013
+Reading netlist ...
+Backslashed names will retain backslash and a trailing blank character.
+Reading verilog netlist './inputs/RegFile.ref.v'
+Inserting temporary buffers to remove assignment statements.
+
+*** Memory Usage v0.159.4.2 (Current mem = 248.344M, initial mem = 57.348M) ***
+*** End netlist parsing (cpu=0:00:00.1, real=0:00:00.0, mem=248.3M) ***
+Set top cell to RegFile.
+Reading max timing library '/ensc/fac1/fcampi/SOCLAB/LIBRARIES/NangateOpenCellLibrary_PDKv1_3_v2010_12/Front_End/Liberty/NLDM/NangateOpenCellLibrary_slow.lib' ...
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on output/inout pin 'ZN' of cell 'AND2_X1' is not defined in the library. Either define this value in the library or use set_default_timing_library to pick these values from a default library.
+**WARN: (TECHLIB-436):	Attribute 'fanout_load' on output/inout pin 'ZN' of cell 'AND2_X1' is not defined in the library. Either define this value in the library or use set_default_timing_library to pick these values from a default library.
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on output/inout pin 'ZN' of cell 'AND2_X2' is not defined in the library. Either define this value in the library or use set_default_timing_library to pick these values from a default library.
+**WARN: (TECHLIB-436):	Attribute 'fanout_load' on output/inout pin 'ZN' of cell 'AND2_X2' is not defined in the library. Either define this value in the library or use set_default_timing_library to pick these values from a default library.
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on output/inout pin 'ZN' of cell 'AND2_X4' is not defined in the library. Either define this value in the library or use set_default_timing_library to pick these values from a default library.
+**WARN: (TECHLIB-436):	Attribute 'fanout_load' on output/inout pin 'ZN' of cell 'AND2_X4' is not defined in the library. Either define this value in the library or use set_default_timing_library to pick these values from a default library.
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on output/inout pin 'ZN' of cell 'AND3_X1' is not defined in the library. Either define this value in the library or use set_default_timing_library to pick these values from a default library.
+**WARN: (TECHLIB-436):	Attribute 'fanout_load' on output/inout pin 'ZN' of cell 'AND3_X1' is not defined in the library. Either define this value in the library or use set_default_timing_library to pick these values from a default library.
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on output/inout pin 'ZN' of cell 'AND3_X2' is not defined in the library. Either define this value in the library or use set_default_timing_library to pick these values from a default library.
+**WARN: (TECHLIB-436):	Attribute 'fanout_load' on output/inout pin 'ZN' of cell 'AND3_X2' is not defined in the library. Either define this value in the library or use set_default_timing_library to pick these values from a default library.
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on output/inout pin 'ZN' of cell 'AND3_X4' is not defined in the library. Either define this value in the library or use set_default_timing_library to pick these values from a default library.
+**WARN: (TECHLIB-436):	Attribute 'fanout_load' on output/inout pin 'ZN' of cell 'AND3_X4' is not defined in the library. Either define this value in the library or use set_default_timing_library to pick these values from a default library.
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on output/inout pin 'ZN' of cell 'AND4_X1' is not defined in the library. Either define this value in the library or use set_default_timing_library to pick these values from a default library.
+**WARN: (TECHLIB-436):	Attribute 'fanout_load' on output/inout pin 'ZN' of cell 'AND4_X1' is not defined in the library. Either define this value in the library or use set_default_timing_library to pick these values from a default library.
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on output/inout pin 'ZN' of cell 'AND4_X2' is not defined in the library. Either define this value in the library or use set_default_timing_library to pick these values from a default library.
+**WARN: (TECHLIB-436):	Attribute 'fanout_load' on output/inout pin 'ZN' of cell 'AND4_X2' is not defined in the library. Either define this value in the library or use set_default_timing_library to pick these values from a default library.
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on output/inout pin 'ZN' of cell 'AND4_X4' is not defined in the library. Either define this value in the library or use set_default_timing_library to pick these values from a default library.
+**WARN: (TECHLIB-436):	Attribute 'fanout_load' on output/inout pin 'ZN' of cell 'AND4_X4' is not defined in the library. Either define this value in the library or use set_default_timing_library to pick these values from a default library.
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on output/inout pin 'ZN' of cell 'AOI21_X1' is not defined in the library. Either define this value in the library or use set_default_timing_library to pick these values from a default library.
+**WARN: (TECHLIB-436):	Attribute 'fanout_load' on output/inout pin 'ZN' of cell 'AOI21_X1' is not defined in the library. Either define this value in the library or use set_default_timing_library to pick these values from a default library.
+ read 134 cells in library 'NangateOpenCellLibrary' 
+Reading min timing library '/ensc/fac1/fcampi/SOCLAB/LIBRARIES/NangateOpenCellLibrary_PDKv1_3_v2010_12/Front_End/Liberty/NLDM/NangateOpenCellLibrary_fast.lib' ...
+ read 134 cells in library 'NangateOpenCellLibrary' 
+*** End library_loading (cpu=0.03min, mem=10.8M, fe_cpu=0.10min, fe_mem=259.2M) ***
+Starting recursive module instantiation check.
+No recursion found.
+Building hierarchical netlist for Cell RegFile ...
+*** Netlist is unique.
+** info: there are 301 modules.
+** info: there are 3647 stdCell insts.
+
+*** Memory Usage v0.159.4.2 (Current mem = 260.723M, initial mem = 57.348M) ***
+*info - Done with setDoAssign with 1 assigns removed and 0 assigns could not be removed.
+CTE reading timing constraint file './inputs/RegFile.sdc' ...
+**WARN: (TCLNL-330):	set_input_delay on clock root 'clk' is not supported. You should use the -source option to set_clock_latency to provide this offset. You can also use the global timing_allow_input_delay_on_clock_source to allow set_input_delay assertion to have an effect on clock source paths beginning at this clock root. (File ./inputs/RegFile.sdc, Line 42).
+
+INFO (CTE): read_dc_script finished with  1 WARNING
+WARNING (CTE-25): Line: 8 of File ./inputs/RegFile.sdc : Skipped unsupported command: set_units
+
+
+*** Read timing constraints (cpu=0:00:00.0 mem=265.4M) ***
+Total number of combinational cells: 99
+Total number of sequential cells: 29
+Total number of tristate cells: 6
+Total number of level shifter cells: 0
+Total number of power gating cells: 0
+Total number of isolation cells: 0
+Total number of power switch cells: 0
+Total number of pulse generator cells: 0
+Total number of always on buffers: 0
+Total number of retention cells: 0
+List of usable buffers: BUF_X1 BUF_X2 BUF_X4 BUF_X8 BUF_X16 BUF_X32 CLKBUF_X1 CLKBUF_X2 CLKBUF_X3
+Total number of usable buffers: 9
+List of unusable buffers:
+Total number of unusable buffers: 0
+List of usable inverters: INV_X1 INV_X2 INV_X4 INV_X8 INV_X16 INV_X32
+Total number of usable inverters: 6
+List of unusable inverters:
+Total number of unusable inverters: 0
+List of identified usable delay cells:
+Total number of identified usable delay cells: 0
+List of identified unusable delay cells:
+Total number of identified unusable delay cells: 0
+No delay cells were detected in the set of buffers. Buffers will be used to fix hold violations.
+*info: set bottom ioPad orient R0
+Set Using Default Delay Limit as 1000.
+Set Default Net Delay as 500 ps.
+Set Default Net Load as 0.5 pF.
+Set Input Pin Transition Delay as 120 ps.
+PreRoute Cap Scale Factor :        1.00
+PreRoute Res Scale Factor :        1.00
+PostRoute Cap Scale Factor :       1.00
+PostRoute Res Scale Factor :       1.00
+PostRoute XCap Scale Factor :      1.00
+
+PreRoute Clock Cap Scale Factor :  1.00	[Derived from postRoute_cap (effortLevel low)]
+PreRoute Clock Res Scale Factor :  1.00	[Derived from postRoute_res (effortLevel low)]
+PostRoute Clock Cap Scale Factor : 1.00	[Derived from postRoute_cap (effortLevel low)]
+PostRoute Clock Res Scale Factor : 1.00	[Derived from postRoute_res (effortLevel low)]
+Reading Capacitance Table File /ensc/fac1/fcampi/SOCLAB/LIBRARIES/NangateOpenCellLibrary_PDKv1_3_v2010_12/Back_End/captables/NCSU_FreePDK_45nm.capTbl ...
+Cap Table was created using Encounter 08.10-p004_1.
+Process name: master_techFreePDK45.
+**WARN: (ENCEXT-2766):	Sheet resistance for layer M2 is not defined in cap table, LEF value 0.25 will be used.
+**WARN: (ENCEXT-2766):	Sheet resistance for layer M3 is not defined in cap table, LEF value 0.25 will be used.
+<CMD_INTERNAL> setCteReport
+<CMD> saveDesign ./DBS/01-importDesign.enc -relativePath -compress
+**WARN: (ENCSYT-3036):	Design directory ./DBS/01-importDesign.enc.dat exists, rename it to ./DBS/01-importDesign.enc.dat.tmp.
+If saveDesign succeeds, it will be deleted.
+Writing Netlist "./DBS/01-importDesign.enc.dat/RegFile.v.gz" ...
+Saving configuration ...
+Saving preference file ./DBS/01-importDesign.enc.dat/enc.pref.tcl ...
+Saving floorplan ...
+Saving Drc markers ...
+... No Drc file written since there is no markers found.
+Saving placement ...
+*** Completed savePlace (cpu=0:00:00.0 real=0:00:00.0 mem=269.6M) ***
+Saving route ...
+*** Completed saveRoute (cpu=0:00:00.0 real=0:00:00.0 mem=269.6M) ***
+*** Completed saveYieldMap (cpu=: 0:00:00.0 real=0:00:00.0 mem=: 0.000M) ***
+Creating constraint file...
+<CMD> setAnalysisMode -analysistype single -checkType setup -skew true -clockPropagation sdcControl
+<CMD> timeDesign -drvReports -slackReports -pathreports -expandReg2Reg -expandedViews -reportOnly -numPaths 10 -outDir results/timing/01-importDesign-timeDesign.setup
+
+------------------------------------------------------------
+          timeDesign Summary                             
+------------------------------------------------------------
+
++--------------------+---------+---------+---------+---------+---------+---------+
+|     Setup mode     |   all   | reg2reg | in2reg  | reg2out | in2out  | clkgate |
++--------------------+---------+---------+---------+---------+---------+---------+
+|           WNS (ns):|  6.856  |  9.227  |  7.172  |  8.163  |  6.856  |   N/A   |
+|           TNS (ns):|  0.000  |  0.000  |  0.000  |  0.000  |  0.000  |   N/A   |
+|    Violating Paths:|    0    |    0    |    0    |    0    |    0    |   N/A   |
+|          All Paths:|  1056   |   512   |  1024   |   32    |   32    |   N/A   |
++--------------------+---------+---------+---------+---------+---------+---------+
+
++----------------+-------------------------------+------------------+
+|                |              Real             |       Total      |
+|    DRVs        +------------------+------------+------------------|
+|                |  Nr nets(terms)  | Worst Vio  |  Nr nets(terms)  |
++----------------+------------------+------------+------------------+
+|   max_cap      |      0 (0)       |   0.000    |      0 (0)       |
+|   max_tran     |      1 (2)       |   -0.500   |     33 (34)      |
+|   max_fanout   |      0 (0)       |     0      |      0 (0)       |
++----------------+------------------+------------+------------------+
+
+Density: 0.000%
+------------------------------------------------------------
+Reported timing to dir results/timing/01-importDesign-timeDesign.setup
+Total CPU time: 0.89 sec
+Total Real time: 2.0 sec
+Total Memory Usage: 288.855469 Mbytes
+<CMD> report_timing -net -format {instance arc cell slew net annotation load delay arrival} -max_paths 10 >  results/timing/01_Timing.rpt
+<CMD> summaryReport -outfile results/summary/01-importDesign.rpt
+Start to collect the design information.
+Build netlist information for Cell RegFile.
+Finish to collect the design information.
+Generating standard cells used in the design report.
+Analyze library ... 
+Analyze netlist ... 
+Generating HFO information report.
+Generate no-driven nets information report.
+Generating Assign Statements report.
+
+**WARN: (ENCDB-1270):	Some nets (4193) did not have valid net lengths
+Analyze timing ... 
+Report saved in file results/summary/01-importDesign.rpt.
+<CMD> getIoFlowFlag
+<CMD> setIoFlowFlag 0
+<CMD> floorPlan -site FreePDK45_38x28_10R_NP_162NW_34O -r 0.994248562141 0.600198 0.0 0.0 0.0 0.0
+<CMD> uiSetTool select
+<CMD> getIoFlowFlag
+<CMD> fit
+<CMD> getIoFlowFlag
+<CMD> setIoFlowFlag 0
+<CMD> floorPlan -site FreePDK45_38x28_10R_NP_162NW_34O -r 0.96675545033 0.600777 0.0 0.0 0.0 0.0
+<CMD> uiSetTool select
+<CMD> getIoFlowFlag
+<CMD> fit
+<CMD> floorPlan -su 1 0.9 4 4 4 4
+Adjusting Core to Left to: 4.1800. Core to Bottom to: 4.0600.
+<CMD> editPin -fixedPin 1 -snap TRACK -side Top -unit TRACK -layer 2 -spreadType center -spacing 5.0 -pin {{addressA[0]} {addressA[1]} {addressA[2]} {addressA[3]} {addressA[4]} {addressB[0]} {addressB[1]} {addressB[2]} {addressB[3]} {addressB[4]} {dataIn[0]} {dataIn[1]} {dataIn[2]} {dataIn[3]} {dataIn[4]} {dataIn[5]} {dataIn[6]} {dataIn[7]} {dataIn[8]} {dataIn[9]} {dataIn[10]} {dataIn[11]} {dataIn[12]} {dataIn[13]} {dataIn[14]} {dataIn[15]} {addressIn[0]} {addressIn[1]} {addressIn[2]} {addressIn[3]} {addressIn[4]} clk reset write }
+Successfully spread [34] pins.
+<CMD> editPin -fixedPin 1 -snap TRACK -side Bottom -use TIELOW -unit TRACK -layer 2 -spreadType center -spacing 10.0 -pin {{outA[0]} {outA[1]} {outA[2]} {outA[3]} {outA[4]} {outA[5]} {outA[6]} {outA[7]} {outA[8]} {outA[9]} {outA[10]} {outA[11]} {outA[12]} {outA[13]} {outA[14]} {outA[15]} {outB[0]} {outB[1]} {outB[2]} {outB[3]} {outB[4]} {outB[5]} {outB[6]} {outB[7]} {outB[8]} {dataIn[9]} {outB[10]} {outB[11]} {outB[12]} {outB[13]} {outB[14]} {outB[15]}}
+Successfully spread [32] pins.
+<CMD> addRing -width_left 0.8 -width_bottom 0.8 -width_top 0.8 -width_right 0.8 -spacing_bottom 0.8 -spacing_top 0.8 -spacing_left 0.8 -spacing_right 0.8 -layer_top metal9 -layer_bottom metal9 -layer_left metal10 -layer_right metal10 -lb 1 -lt 1 -rb 1 -rt 1 -nets {VDD VSS}
+
+
+The power planner created 8 wires.
+
+<CMD> addStripe -direction vertical -set_to_set_distance 9.6 -spacing 4 -layer metal10 -width 0.8 -nets {VSS VDD }
+**WARN: (ENCPP-2008):	AddStripe option -remove_floating_stripe_over_block is ON so all fragmented stripes within a block will be removed.
+  To turn OFF, setAddStripeOption -remove_floating_stripe_over_block 0.
+
+Starting stripe generation ...
+Stripe generation is complete.
+
+The power planner created 17 wires.
+
+<CMD> sroute -noPadPins -noPadRings -routingEffort allowShortJogs -nets {VDD VSS}
+**WARN: (ENCSR-4053):	SRoute option "-noPadPins" is obsolete and has been replaced by "-connect". The obsolete option still works in this release, but to avoid this warning and to ensure compatibility with future releases, update your script to use "-connect".
+**WARN: (ENCSR-4053):	SRoute option "-noPadRings" is obsolete and has been replaced by "-connect". The obsolete option still works in this release, but to avoid this warning and to ensure compatibility with future releases, update your script to use "-connect".
+No routing obstructions were found in the design.
+*** Begin SPECIAL ROUTE on Wed Nov 13 12:20:18 2013 ***
+Sroute/fcroute version 8.1.46 promoted on 02/17/2009.
+SPECIAL ROUTE ran on directory: /ensc/grad1/cmc-14/Finalproject/BE_045
+SPECIAL ROUTE ran on machine: esl2-5 (Linux 2.6.18-371.1.2.el5PAE i686 2.66Ghz)
+
+Begin option processing ...
+(from .sroute_17477.conf) srouteConnectPowerBump set to false
+(from .sroute_17477.conf) routeSelectNet set to "VDD VSS"
+(from .sroute_17477.conf) routeSpecial set to true
+(from .sroute_17477.conf) srouteConnectPadPin set to false
+(from .sroute_17477.conf) sroutePadPinAllPorts set to true
+(from .sroute_17477.conf) sroutePreserveExistingRoutes set to true
+(from .sroute_17477.conf) srouteRoutingEffort set to 3
+End option processing: cpu: 0:00:00, real: 0:00:00, peak: 496.00 megs.
+
+Reading DB technology information...
+Finished reading DB technology information.
+Reading floorplan and netlist information...
+Finished reading floorplan and netlist information.
+Read in 22 layers, 10 routing layers, 1 overlap layer
+Read in 134 macros, 16 used
+Read in 16 components
+  16 core components: 16 unplaced, 0 placed, 0 fixed
+Read in 73 physical pins
+  73 physical pins: 0 unplaced, 0 placed, 73 fixed
+Read in 1 logical pins
+Read in 66 nets
+Read in 2 special nets, 2 routed
+Read in 105 terminals
+2 nets selected.
+
+Begin power routing ...
+**WARN: (ENCSR-1254):	Net VDD does not have block pins to be routed. Please check net list.
+**WARN: (ENCSR-1254):	Net VSS does not have block pins to be routed. Please check net list.
+CPU time for FollowPin 0 seconds
+CPU time for FollowPin 0 seconds
+  Number of Block ports routed: 0
+  Number of Stripe ports routed: 0
+  Number of Core ports routed: 118
+  Number of Power Bump ports routed: 0
+  Number of Followpin connections: 59
+End power routing: cpu: 0:00:00, real: 0:00:00, peak: 508.00 megs.
+
+
+
+ Begin updating DB with routing results ...
+ Updating DB with 73 io pins ...
+ Updating DB with 44 via definition ...Extracting standard cell pins and blockage ...... 
+Pin and blockage extraction finished
+
+
+sroute post-processing starts at Wed Nov 13 12:20:18 2013
+The viaGen is rebuilding shadow vias for net VSS.
+sroute post-processing ends at Wed Nov 13 12:20:19 2013
+
+sroute post-processing starts at Wed Nov 13 12:20:19 2013
+The viaGen is rebuilding shadow vias for net VDD.
+sroute post-processing ends at Wed Nov 13 12:20:19 2013
+
+
+sroute: Total CPU time used = 0:0:0
+sroute: Total Real time used = 0:0:1
+sroute: Total Memory used = 1.85 megs
+sroute: Total Peak Memory used = 293.49 megs
+<CMD> defOut -floorplan -noStdCells results/RegFile_floor.def
+Writing DEF file 'results/RegFile_floor.def', current time is Wed Nov 13 12:20:19 2013 ...
+unitPerMicron=2000, dbgMicronPerDBU=0.000500, unitPerDBU=1.000000
+DEF file 'results/RegFile_floor.def' is written, current time is Wed Nov 13 12:20:19 2013 ...
+<CMD> saveDesign ./DBS/02-floorplan.enc -relativePath -compress
+Writing Netlist "./DBS/02-floorplan.enc.dat/RegFile.v.gz" ...
+Saving configuration ...
+Saving preference file ./DBS/02-floorplan.enc.dat/enc.pref.tcl ...
+Saving floorplan ...
+Saving Drc markers ...
+... No Drc file written since there is no markers found.
+Saving placement ...
+*** Completed savePlace (cpu=0:00:00.0 real=0:00:00.0 mem=296.5M) ***
+Saving route ...
+*** Completed saveRoute (cpu=0:00:00.0 real=0:00:01.0 mem=296.5M) ***
+*** Completed saveYieldMap (cpu=: 0:00:00.0 real=0:00:00.0 mem=: 0.000M) ***
+Creating constraint file...
+<CMD> summaryReport -outfile results/summary/02-floorplan.rpt
+Start to collect the design information.
+Build netlist information for Cell RegFile.
+Finish to collect the design information.
+Generating standard cells used in the design report.
+Analyze library ... 
+Analyze netlist ... 
+Generating HFO information report.
+Generate no-driven nets information report.
+Generating Assign Statements report.
+
+**WARN: (ENCDB-1270):	Some nets (4128) did not have valid net lengths
+Analyze timing ... 
+Report saved in file results/summary/02-floorplan.rpt.
+<CMD> selectObject IO_Pin {addressA[0]}
+<CMD> windowSelect 33.397 88.953 31.199 88.858
+<CMD> windowSelect 30.379 88.921 36.479 88.942
+<CMD> windowSelect 34.689 90.575 33.148 90.527
+<CMD> panPage 1 0
+<CMD> panPage 1 0
+<CMD> panPage 1 0
+<CMD> panPage -1 0
+<CMD> panPage -1 0
+<CMD> panPage -1 0
+<CMD> panPage 1 0
+<CMD> editPin -side Top -fixedPin 1 -layer 2 -spreadType start -spacing 0.95 -start 28.975 89.26 -pin {{addressA[0]} {addressA[1]} {addressA[2]} {addressA[3]} {addressA[4]}}
+Successfully spread [5] pins.
+<CMD> saveDesign RegFile.enc
+Writing Netlist "RegFile.enc.dat/RegFile.v.gz" ...
+Saving configuration ...
+Saving preference file RegFile.enc.dat/enc.pref.tcl ...
+Saving floorplan ...
+Saving Drc markers ...
+... No Drc file written since there is no markers found.
+Saving placement ...
+*** Completed savePlace (cpu=0:00:00.0 real=0:00:00.0 mem=322.4M) ***
+Saving route ...
+*** Completed saveRoute (cpu=0:00:00.0 real=0:00:00.0 mem=322.4M) ***
+*** Completed saveYieldMap (cpu=: 0:00:00.0 real=0:00:00.0 mem=: 0.000M) ***
+Creating constraint file...
+
+*** Memory Usage v0.159.4.2 (Current mem = 323.434M, initial mem = 57.348M) ***
+--- Ending "Encounter" (totcpu=0:00:16.9, real=0:38:55, mem=323.4M) ---

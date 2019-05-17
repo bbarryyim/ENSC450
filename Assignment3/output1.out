@@ -1,0 +1,129 @@
+Using: /usr/bin/time -p /Lnx_STC/tools/synopsys/hspice_vD-2010.03-SP2/hspice/linux/hspice hspice_inv.cir
+ ****** HSPICE -- D-2010.03-SP2 32-BIT (Aug 26 2010) linux ******               
+  Copyright (C) 2010 Synopsys, Inc. All Rights Reserved.                        
+  Unpublished-rights reserved under US copyright laws.
+  This program is protected by law and is subject to the 
+  terms and conditions of the license agreement from Synopsys.
+  Use of this program is your acceptance to be bound by the 
+  license agreement. HSPICE is the trademark of Synopsys, Inc.
+  Input File: hspice_inv.cir                                                    
+ lic: No 'setenv LM_LICENSE_FILE' in current environment' 
+ lic:  
+ lic: FLEXlm: v10.8 
+ lic: USER:   cmc-14               HOSTNAME: esl2-5 
+ lic: HOSTID: 0023ae787a95         PID:      28626 
+ lic: Using FLEXlm license file: 
+ lic: 6053@199.60.12.40 
+ lic: Checkout 1 hspice 
+ lic: License/Maintenance for hspice will expire on 01-jul-2014/2013.03 
+ lic: 1(in_use)/150(total) FLOATING license(s) on SERVER 199.60.12.40 
+ lic:   
+ Init: read cwd configuration file: meta.cfg
+1****** HSPICE -- D-2010.03-SP2 32-BIT (Aug 26 2010) linux ******               
+ ******  
+ * hspice deck
+
+  ******  circuit name directory
+ circuit number to circuit name directory
+   number circuitname                     definition         multiplier
+        0 main circuit
+        1 xinvschem.                      iv_schematic       1.00 
+        2 xinvextr.                       iv_extracted       1.00 
+  **warning** (hspice_inv.cir:12) Both nodes of element vgnd are connected together; Line ignored.
+  **info** (hspice_inv.cir:44) DC voltage reset to initial transient source value              in source        0:va                  new dc=  0.0000D+00
+ 
+
+ 
+      
+ **info** set option symb=1 internally to help for convergence.
+ *****************************************************************
+ ******  option summary
+ ******
+ runlvl  = 3         bypass  = 2         
+  Opening plot unit= 15
+ file=hspice_inv.pa0                                                           
+
+1****** HSPICE -- D-2010.03-SP2 32-BIT (Aug 26 2010) linux ******               
+ ******  
+ * hspice deck
+
+  ******  operating point information tnom=  25.000 temp=  25.000 *****
+ ***** operating point status is voltage   simulation time is     0.     
+    node    =voltage      node    =voltage      node    =voltage
+
+ +0:a       =   0.      0:vdd!    =   1.2000  0:ze      =   1.2000 
+ +0:zs      =   1.2000 
+
+ ******  
+ * hspice deck
+
+  ******  transient analysis tnom=  25.000 temp=  25.000 *****
+   tpdrise_s=  9.7091E-10  targ=  2.0471E-08   trig=  1.9500E-08
+   tpdfall_s=  4.0215E-10  targ=  9.9022E-09   trig=  9.5000E-09
+   totrrise_s=  1.3936E-09  targ=  2.1284E-08   trig=  1.9891E-08
+   totrfall_s=  4.5432E-10  targ=  1.0101E-08   trig=  9.6471E-09
+   tpdrise_e=  9.9032E-10  targ=  2.0490E-08   trig=  1.9500E-08
+   tpdfall_e=  4.0826E-10  targ=  9.9083E-09   trig=  9.5000E-09
+   totrrise_e=  1.4404E-09  targ=  2.1336E-08   trig=  1.9896E-08
+   totrfall_e=  4.6275E-10  targ=  1.0113E-08   trig=  9.6499E-09
+
+          ***** job concluded
+1****** HSPICE -- D-2010.03-SP2 32-BIT (Aug 26 2010) linux ******               
+ ******  
+ * hspice deck
+
+  ******  job statistics summary tnom=  25.000 temp=  25.000 *****
+ 
+ 
+ ******  Machine Information  ******
+ CPU:
+ model name	: Intel(R) Core(TM)2 Duo CPU     E7300  @ 2.66GHz
+ cpu MHz	: 2660.156
+ 
+ OS:
+ Linux version 2.6.18-348.16.1.el5PAE (mockbuild@builder17.centos.org) (gcc vers
+ ion 4.1.2 20080704 (Red Hat 4.1.2-54)) #1 SMP Wed Aug 21 04:49:45 EDT 2013
+
+
+  ******  HSPICE Threads Information  ******
+
+  Command Line Threads Count                  :     1
+  Available CPU Count                         :     2
+  Actual Model Evaluation(Load) Threads Count :     1
+  Actual Solver Threads Count                 :     1
+
+
+  ******  Circuit Statistics  ******
+  # nodes       =      13 # elements   =       8
+  # resistors   =       0 # capacitors =       2 # inductors   =       0
+  # mutual_inds =       0 # vccs       =       0 # vcvs        =       0
+  # cccs        =       0 # ccvs       =       0 # volt_srcs   =       2
+  # curr_srcs   =       0 # diodes     =       0 # bjts        =       0
+  # jfets       =       0 # mosfets    =       4 # U elements  =       0
+  # T elements  =       0 # W elements =       0 # B elements  =       0
+  # S elements  =       0 # P elements =       0 # va device   =       0
+
+
+  ******  Runtime Statistics (seconds)  ******
+
+  analysis           time    # points   tot. iter  conv.iter
+  op point           0.00           1           4
+  transient          0.06     4000001         220          91 rev=        17
+  readin             0.03
+  errchk             0.01
+  setup              0.00
+  output             0.00
+
+
+           total memory used          329  kbytes
+           total cpu time            0.10 seconds
+           total elapsed time        1.44 seconds
+           job started at     17:26:14 10/18/2013
+           job ended   at     17:26:15 10/18/2013
+
+
+>info:         ***** hspice job concluded
+ lic: Release hspice token(s) 
+real 1.52
+user 0.10
+sys 0.01

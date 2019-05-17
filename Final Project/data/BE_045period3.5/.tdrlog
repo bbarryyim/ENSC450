@@ -1,0 +1,39 @@
+
+
+Setting Timing Driven Routing Constraints ...  Thu Nov 21 11:15:58 2013
+================================================================================
+slack  (-0.027 : +1.649 : +3.030) std_dev(1.914)
++0.023 (19), +0.073 (17), +0.123 (8), +0.173 (28), +0.223 (6)
++0.273 (6), +0.373 (4), +0.473 (4), +0.573 (1), +0.773 (17)
++0.973 (987), +1.473 (1025), +1.973 (12), +2.973 (819), +2.973^ (511)
+
+[1] ...
+select (-0.027 : +1.649)
+total_net(4132) select(2124) bad(0) tieup(0) special(0) dont_route(20)
+hi_fanout(3) already_constr(0) short_net(0) pos_slack(1985)
+evaluate 2124 nets between (-0.027 : +1.490)
+1.2(62) 1.4(15) 1.6(59) 1.8(8)
+2.0(7) 2.2(10) 2.5(0) 2.7(1)
+3.0(2) 3.5(3) 4.0(18) 5.0(108)
+6.0(250) 7.0(144) 8.0(0)
+
+[2] ...
+select (-0.027 : +0.969)
+total_net(4132) select(111) bad(0) tieup(0) special(0) dont_route(4)
+hi_fanout(8) already_constr(16) short_net(3433) no_timing(0) pos_slack(560)
+net lengths min(10.14) med(34.08) max(71.10)
+short threshold(68.15) long threshold(52.59)
+(11)
+(0)
+
+[3] ...
+M1 res 0.380000 ohm, cap 0.158504 ff, delay 0.860452 ns
+M2 res 0.250000 ohm, cap 0.116057 ff, delay 0.414490 ns
+M3 res 0.250000 ohm, cap 0.162300 ff, delay 0.579641 ns
+M4 res 0.210000 ohm, cap 0.168753 ff, delay 0.253129 ns
+M5 res 0.210000 ohm, cap 0.166731 ff, delay 0.250096 ns
+prefer (2 - 5)
+select (-0.027 : +0.000)
+total_net(4132) select(0) bad(0) tieup(0) special(0) dont_route(20)
+hi_fanout(3) already_constr(0) short_net(4084) pos_slack(25)
+

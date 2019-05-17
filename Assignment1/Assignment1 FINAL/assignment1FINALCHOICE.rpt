@@ -1,0 +1,174 @@
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : reference
+Design : assignment1
+Version: Z-2007.03-SP5
+Date   : Tue Sep 24 12:55:15 2013
+****************************************
+
+Attributes:
+    b - black box (unknown)
+   bo - allows boundary optimization
+    d - dont_touch
+   mo - map_only
+    h - hierarchical
+    n - noncombinational
+    r - removable
+    s - synthetic operator
+    u - contains unmapped logic
+
+Reference          Library       Unit Area   Count    Total Area   Attributes
+-----------------------------------------------------------------------------
+AOI22_X1           NangateOpenCellLibrary
+                                  1.330000      16     21.280001  
+DFFR_X1            NangateOpenCellLibrary
+                                  5.320000      32    170.240005  n
+FA_X1              NangateOpenCellLibrary
+                                  4.256000      10     42.560000  r
+HA_X1              NangateOpenCellLibrary
+                                  2.660000       6     15.960001  r
+INV_X1             NangateOpenCellLibrary
+                                  0.532000      16      8.512000  
+INV_X2             NangateOpenCellLibrary
+                                  0.798000       3      2.394000  
+assignment1_DW01_add_0           66.500001       1     66.500001  h
+assignment1_DW01_sub_0           47.348000       1     47.348000  h
+assignment1_DW01_sub_1           65.968001       1     65.968001  h
+assignment1_DW_mult_uns_1        72.884001       1     72.884001  h
+-----------------------------------------------------------------------------
+Total 10 references                                   513.646008
+1
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+        -transition_time
+        -capacitance
+Design : assignment1
+Version: Z-2007.03-SP5
+Date   : Tue Sep 24 12:55:15 2013
+****************************************
+
+Operating Conditions: slow   Library: NangateOpenCellLibrary
+Wire Load Model Mode: top
+
+  Startpoint: RB_reg[0] (rising edge-triggered flip-flop clocked by CLK)
+  Endpoint: RZ_reg[15] (rising edge-triggered flip-flop clocked by CLK)
+  Path Group: CLK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  assignment1        5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                          Cap     Trans      Incr       Path
+  ------------------------------------------------------------------------------------
+  clock CLK (rise edge)                                             0.00       0.00
+  clock network delay (ideal)                                       0.00       0.00
+  RB_reg[0]/CK (DFFR_X1)                                  0.00      0.00       0.00 r
+  RB_reg[0]/Q (DFFR_X1)                         7.17      0.07      0.38       0.38 r
+  mult_48/b[0] (assignment1_DW_mult_uns_1)                          0.00       0.38 r
+  mult_48/U54/ZN (INV_X1)                       7.80      0.03      0.08       0.46 f
+  mult_48/U14/S (HA_X1)                         1.95      0.09      0.15       0.61 r
+  mult_48/product[1] (assignment1_DW_mult_uns_1)                    0.00       0.61 r
+  sub_51/B[1] (assignment1_DW01_sub_1)                              0.00       0.61 r
+  sub_51/U12/ZN (INV_X1)                        3.78      0.03      0.06       0.67 f
+  sub_51/U2_1/CO (FA_X1)                        3.05      0.05      0.32       0.99 f
+  sub_51/U2_2/CO (FA_X1)                        3.05      0.05      0.30       1.29 f
+  sub_51/U2_3/CO (FA_X1)                        3.05      0.05      0.30       1.59 f
+  sub_51/U2_4/CO (FA_X1)                        3.05      0.05      0.30       1.89 f
+  sub_51/U2_5/CO (FA_X1)                        3.05      0.05      0.30       2.18 f
+  sub_51/U2_6/CO (FA_X1)                        3.05      0.05      0.30       2.48 f
+  sub_51/U2_7/CO (FA_X1)                        3.05      0.05      0.30       2.78 f
+  sub_51/U2_8/CO (FA_X1)                        3.05      0.05      0.30       3.07 f
+  sub_51/U2_9/CO (FA_X1)                        3.05      0.05      0.30       3.37 f
+  sub_51/U2_10/CO (FA_X1)                       3.05      0.05      0.30       3.67 f
+  sub_51/U2_11/CO (FA_X1)                       3.05      0.05      0.30       3.97 f
+  sub_51/U2_12/CO (FA_X1)                       3.05      0.05      0.30       4.26 f
+  sub_51/U2_13/CO (FA_X1)                       1.95      0.05      0.29       4.55 f
+  sub_51/U3/ZN (INV_X1)                        11.63      0.10      0.15       4.70 r
+  sub_51/DIFF[14] (assignment1_DW01_sub_1)                          0.00       4.70 r
+  I_0/ZN (INV_X2)                              38.63      0.05      0.14       4.84 f
+  U37/ZN (AOI22_X1)                             1.95      0.10      0.18       5.02 r
+  U36/ZN (INV_X1)                               3.95      0.03      0.06       5.09 f
+  add_57/A[0] (assignment1_DW01_add_0)                              0.00       5.09 f
+  add_57/U1/ZN (AND2_X1)                        3.05      0.02      0.11       5.20 f
+  add_57/U1_1/CO (FA_X1)                        3.05      0.05      0.29       5.49 f
+  add_57/U1_2/CO (FA_X1)                        3.05      0.05      0.30       5.78 f
+  add_57/U1_3/CO (FA_X1)                        3.05      0.05      0.30       6.08 f
+  add_57/U1_4/CO (FA_X1)                        3.05      0.05      0.30       6.38 f
+  add_57/U1_5/CO (FA_X1)                        3.05      0.05      0.30       6.67 f
+  add_57/U1_6/CO (FA_X1)                        3.05      0.05      0.30       6.97 f
+  add_57/U1_7/CO (FA_X1)                        3.05      0.05      0.30       7.27 f
+  add_57/U1_8/CO (FA_X1)                        3.05      0.05      0.30       7.56 f
+  add_57/U1_9/CO (FA_X1)                        3.05      0.05      0.30       7.86 f
+  add_57/U1_10/CO (FA_X1)                       3.05      0.05      0.30       8.16 f
+  add_57/U1_11/CO (FA_X1)                       3.05      0.05      0.30       8.46 f
+  add_57/U1_12/CO (FA_X1)                       3.05      0.05      0.30       8.75 f
+  add_57/U1_13/CO (FA_X1)                       3.05      0.05      0.30       9.05 f
+  add_57/U1_14/CO (FA_X1)                       3.05      0.05      0.30       9.35 f
+  add_57/U1_15/S (FA_X1)                        1.40      0.05      0.36       9.71 f
+  add_57/SUM[15] (assignment1_DW01_add_0)                           0.00       9.71 f
+  RZ_reg[15]/D (DFFR_X1)                                  0.05      0.01       9.72 f
+  data arrival time                                                            9.72
+
+  clock CLK (rise edge)                                            10.00      10.00
+  clock network delay (ideal)                                       0.00      10.00
+  RZ_reg[15]/CK (DFFR_X1)                                           0.00      10.00 r
+  library setup time                                               -0.18       9.82
+  data required time                                                           9.82
+  ------------------------------------------------------------------------------------
+  data required time                                                           9.82
+  data arrival time                                                           -9.72
+  ------------------------------------------------------------------------------------
+  slack (MET)                                                                  0.11
+
+
+1
+Loading db file '/ensc/fac1/fcampi/SOCLAB/LIBRARIES/NangateOpenCellLibrary_PDKv1_3_v2010_12/Front_End/DB/NangateOpenCellLibrary_slow.db'
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+Warning: Design has unannotated primary inputs. (PWR-414)
+Warning: Design has unannotated sequential cell outputs. (PWR-415)
+ 
+****************************************
+Report : power
+        -analysis_effort low
+Design : assignment1
+Version: Z-2007.03-SP5
+Date   : Tue Sep 24 12:55:15 2013
+****************************************
+
+
+Library(s) Used:
+
+    NangateOpenCellLibrary (File: /ensc/fac1/fcampi/SOCLAB/LIBRARIES/NangateOpenCellLibrary_PDKv1_3_v2010_12/Front_End/DB/NangateOpenCellLibrary_slow.db)
+
+
+Operating Conditions: slow   Library: NangateOpenCellLibrary
+Wire Load Model Mode: top
+
+Design        Wire Load Model            Library
+------------------------------------------------
+assignment1            5K_hvratio_1_1    NangateOpenCellLibrary
+
+
+Global Operating Voltage = 0.95 
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000ff
+    Time Units = 1ns
+    Dynamic Power Units = 1uW    (derived from V,C,T units)
+    Leakage Power Units = 1nW
+
+
+  Cell Internal Power  =  36.6857 uW   (67%)
+  Net Switching Power  =  17.6748 uW   (33%)
+                         ---------
+Total Dynamic Power    =  54.3605 uW  (100%)
+
+Cell Leakage Power     =   6.0292 uW
+
+1

@@ -1,0 +1,181 @@
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : reference
+Design : RegFile
+Version: Z-2007.03-SP5
+Date   : Thu Nov 21 11:11:50 2013
+****************************************
+
+Attributes:
+    b - black box (unknown)
+   bo - allows boundary optimization
+    d - dont_touch
+   mo - map_only
+    h - hierarchical
+    n - noncombinational
+    r - removable
+    s - synthetic operator
+    u - contains unmapped logic
+
+Reference          Library       Unit Area   Count    Total Area   Attributes
+-----------------------------------------------------------------------------
+AND2_X1            NangateOpenCellLibrary
+                                  1.064000      52     55.328001  
+AOI22_X1           NangateOpenCellLibrary
+                                  1.330000     512    680.960022  
+CLKBUF_X1          NangateOpenCellLibrary
+                                  0.798000      31     24.737999  
+CLKBUF_X2          NangateOpenCellLibrary
+                                  1.064000       3      3.192000  
+INV_X1             NangateOpenCellLibrary
+                                  0.532000     572    304.304003  
+INV_X2             NangateOpenCellLibrary
+                                  0.798000      33     26.333999  
+NAND2_X1           NangateOpenCellLibrary
+                                  0.798000      64     51.071999  
+NOR2_X1            NangateOpenCellLibrary
+                                  0.798000      12      9.576000  
+NOR4_X1            NangateOpenCellLibrary
+                                  1.330000      64     85.120003  
+OAI22_X1           NangateOpenCellLibrary
+                                  1.330000     256    340.480011  
+OAI221_X1          NangateOpenCellLibrary
+                                  1.596000     256    408.575989  
+OR2_X1             NangateOpenCellLibrary
+                                  1.064000      72     76.608001  
+OR2_X2             NangateOpenCellLibrary
+                                  1.330000      56     74.480002  
+SingleReg_0                     119.434003       1    119.434003  h, n
+SingleReg_1                     119.434003       1    119.434003  h, n
+SingleReg_2                     119.434003       1    119.434003  h, n
+SingleReg_3                     119.434003       1    119.434003  h, n
+SingleReg_4                     119.434003       1    119.434003  h, n
+SingleReg_5                     119.434003       1    119.434003  h, n
+SingleReg_6                     119.434003       1    119.434003  h, n
+SingleReg_7                     119.434003       1    119.434003  h, n
+SingleReg_8                     119.434003       1    119.434003  h, n
+SingleReg_9                     119.434003       1    119.434003  h, n
+SingleReg_10                    119.434003       1    119.434003  h, n
+SingleReg_11                    119.434003       1    119.434003  h, n
+SingleReg_12                    119.434003       1    119.434003  h, n
+SingleReg_13                    119.434003       1    119.434003  h, n
+SingleReg_14                    119.434003       1    119.434003  h, n
+SingleReg_15                    119.434003       1    119.434003  h, n
+SingleReg_16                    119.434003       1    119.434003  h, n
+SingleReg_17                    119.434003       1    119.434003  h, n
+SingleReg_18                    119.434003       1    119.434003  h, n
+SingleReg_19                    119.434003       1    119.434003  h, n
+SingleReg_20                    119.434003       1    119.434003  h, n
+SingleReg_21                    119.434003       1    119.434003  h, n
+SingleReg_22                    119.434003       1    119.434003  h, n
+SingleReg_23                    119.434003       1    119.434003  h, n
+SingleReg_24                    119.434003       1    119.434003  h, n
+SingleReg_25                    119.434003       1    119.434003  h, n
+SingleReg_26                    119.434003       1    119.434003  h, n
+SingleReg_27                    119.434003       1    119.434003  h, n
+SingleReg_28                    119.434003       1    119.434003  h, n
+SingleReg_29                    119.434003       1    119.434003  h, n
+SingleReg_30                    119.434003       1    119.434003  h, n
+SingleReg_31                    119.434003       1    119.434003  h, n
+-----------------------------------------------------------------------------
+Total 45 references                                  5962.656114
+1
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+        -transition_time
+        -capacitance
+Design : RegFile
+Version: Z-2007.03-SP5
+Date   : Thu Nov 21 11:11:50 2013
+****************************************
+
+Operating Conditions: slow   Library: NangateOpenCellLibrary
+Wire Load Model Mode: top
+
+  Startpoint: addressA[1]
+              (input port clocked by CLK)
+  Endpoint: outA[0] (output port clocked by CLK)
+  Path Group: CLK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  RegFile            5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                           Cap     Trans      Incr       Path
+  ---------------------------------------------------------------------
+  clock CLK (rise edge)                              0.00       0.00
+  clock network delay (ideal)                        0.00       0.00
+  input external delay                               0.80       0.80 f
+  addressA[1] (in)               1.07      1.00      0.00       0.80 f
+  U1790/Z (CLKBUF_X1)            6.02      0.07      0.45       1.25 f
+  U1780/ZN (NOR2_X1)            15.49      0.30      0.41       1.66 r
+  U1730/ZN (AND2_X1)            34.00      0.29      0.46       2.13 r
+  U1729/ZN (AOI22_X1)            1.91      0.08      0.14       2.27 f
+  U1728/ZN (OAI221_X1)           1.96      0.13      0.12       2.39 r
+  U1700/ZN (NOR4_X1)             1.92      0.04      0.06       2.46 f
+  U1699/ZN (NAND2_X1)            5.31      0.06      0.11       2.56 r
+  outA[0] (out)                            0.06      0.03       2.60 r
+  data arrival time                                             2.60
+
+  clock CLK (rise edge)                              3.50       3.50
+  clock network delay (ideal)                        0.00       3.50
+  output external delay                             -0.80       2.70
+  data required time                                            2.70
+  ---------------------------------------------------------------------
+  data required time                                            2.70
+  data arrival time                                            -2.60
+  ---------------------------------------------------------------------
+  slack (MET)                                                   0.10
+
+
+1
+Loading db file '/ensc/fac1/fcampi/SOCLAB/LIBRARIES/NangateOpenCellLibrary_PDKv1_3_v2010_12/Front_End/DB/NangateOpenCellLibrary_slow.db'
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+Warning: Design has unannotated primary inputs. (PWR-414)
+Warning: Design has unannotated sequential cell outputs. (PWR-415)
+ 
+****************************************
+Report : power
+        -analysis_effort low
+Design : RegFile
+Version: Z-2007.03-SP5
+Date   : Thu Nov 21 11:11:51 2013
+****************************************
+
+
+Library(s) Used:
+
+    NangateOpenCellLibrary (File: /ensc/fac1/fcampi/SOCLAB/LIBRARIES/NangateOpenCellLibrary_PDKv1_3_v2010_12/Front_End/DB/NangateOpenCellLibrary_slow.db)
+
+
+Operating Conditions: slow   Library: NangateOpenCellLibrary
+Wire Load Model Mode: top
+
+Design        Wire Load Model            Library
+------------------------------------------------
+RegFile                5K_hvratio_1_1    NangateOpenCellLibrary
+
+
+Global Operating Voltage = 0.95 
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000ff
+    Time Units = 1ns
+    Dynamic Power Units = 1uW    (derived from V,C,T units)
+    Leakage Power Units = 1nW
+
+
+  Cell Internal Power  = 937.1561 uW   (69%)
+  Net Switching Power  = 430.6781 uW   (31%)
+                         ---------
+Total Dynamic Power    =   1.3678 mW  (100%)
+
+Cell Leakage Power     =  75.1142 uW
+
+1

@@ -1,0 +1,3 @@
+setAnalysisMode -analysisType single -checkType setup -clockPropagation sdcControl -skew true
+setDelayCalMode -engine default
+setIlmMode -highFanoutPort true -loopBack false 

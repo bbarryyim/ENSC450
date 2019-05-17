@@ -1,0 +1,5 @@
+setAnalysisMode -analysisType single -checkType setup -clkSrcPath true -clockPropagation sdcControl -skew true -virtualIPO false
+setExtractRCMode  -engine preRoute
+setDelayCalMode -engine default
+setPlaceMode -ignoreScan true -timingDriven true
+setIlmMode -highFanoutPort true -loopBack false 

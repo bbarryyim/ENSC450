@@ -1,0 +1,8 @@
+setDesignMode -process 90
+setAnalysisMode -analysisType single -checkType setup -clkSrcPath false -clockPropagation forcedIdeal -skew true -virtualIPO false
+setTrialRouteMode -handlePreroute true -keepMarkedOptRoutes true
+setOptMode -drcMargin 0 -effort high -fixDrc true -route noPreserve -setupTargetSlack 0
+setExtractRCMode  -engine preRoute
+setDelayCalMode -engine default
+setPlaceMode -ignoreScan true -timingDriven true
+setIlmMode -highFanoutPort true -loopBack false 

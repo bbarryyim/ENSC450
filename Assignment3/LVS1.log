@@ -1,0 +1,81 @@
+/ensc/Lnx_STC/tools/cadence/IC5141USR5_lnx86/tools.lnx86/dfII/bin/si: environment variable CDS_TEST_LIBPATH is set for Cadence testing
+/ensc/Lnx_STC/tools/cadence/IC5141USR5_lnx86/tools.lnx86/dfII/bin/si: LD_LIBRARY_PATH for testing is:  /usr/lib:/lib:/ensc/Lnx_STC/tools/cadence/IC5141USR5_lnx86/tools/lib:/usr/lib:/lib:/CMC/tools/cadence/IC5141USR5_lnx86/tools/lib:/ensc/fac1/rick/esil/setup/lib:/lib:/usr/lib:/usr/lib:/lib:/usr/local-linux/lib:/CMC/lib/x86:/CMC/lib/sl3_32bit:/CMC/tools/cadence/IC5141USR5_lnx86/tools/lib:/CMC/tools/cadence/ASSURA32-5141_lnx86/tools/lib:/CMC/tools/cadence/EDI91/tools/lib:/CMC/tools/cadence/ISU08/tools.lnx86/lib
+/ensc/Lnx_STC/tools/cadence/IC5141USR5_lnx86/tools.lnx86/dfII/bin/si: SHLIB_PATH for testing is:  /usr/lib:/lib:/ensc/Lnx_STC/tools/cadence/IC5141USR5_lnx86/tools/lib:/usr/lib:/lib:/CMC/tools/cadence/IC5141USR5_lnx86/tools/lib:/usr/lib
+/ensc/Lnx_STC/tools/cadence/IC5141USR5_lnx86/tools.lnx86/dfII/bin/si: LIBPATH for testing is:  /usr/lib:/lib:/ensc/Lnx_STC/tools/cadence/IC5141USR5_lnx86/tools/lib:/usr/lpp/X11/lib/R6:/usr/lib:/lib:/CMC/tools/cadence/IC5141USR5_lnx86/tools/lib:/usr/lpp/X11/lib/R6:/usr/lib
+ 
+home dir simrc 
+
+Running simulation in directory: "/ensc/grad1/cmc-14/Assignment3/CDS/LVS".
+
+
+
+Begin netlist:    Oct 18 18:55:42 2013
+	view name list	= ("auLvs" "macrolvs" "extracted" "netlist" "schematic")
+	stop name list	= ("auLvs" "macrolvs")
+	library name	= "Assignment3lib"
+	cell name	= "LayoutDesign"
+	view name	= "extracted"
+	globals lib	= "basic"
+Running Artist Flat Netlisting ...
+End netlist:    Oct 18 18:55:42 2013
+
+Moving original netlist to extNetlist
+Removing parasitic components from netlist
+	presistors removed:  0
+	pcapacitors removed: 0
+	pinductors removed:  0
+	pdiodes removed:     0
+	trans lines removed: 0
+	4 nodes merged into 4 nodes
+
+
+Begin netlist:    Oct 18 18:55:42 2013
+	view name list	= ("auLvs" "macrolvs" "netlist" "schematic" "extracted")
+	stop name list	= ("auLvs" "macrolvs")
+	library name	= "Assignment3lib"
+	cell name	= "Assign3Cell"
+	view name	= "schematic"
+	globals lib	= "basic"
+Running Artist Flat Netlisting ...
+End netlist:    Oct 18 18:55:42 2013
+
+Moving original netlist to extNetlist
+Removing parasitic components from netlist
+	presistors removed:  0
+	pcapacitors removed: 0
+	pinductors removed:  0
+	pdiodes removed:     0
+	trans lines removed: 0
+	6 nodes merged into 6 nodes
+
+Running netlist comparison program:  LVS
+Begin comparison:    Oct 18 18:55:42 2013
+@(#)$CDS: LVS.exe version 5.1.0 06/20/2007 02:10 (cicln03) $
+
+The net-lists match.
+
+			     layout  schematic
+				instances
+	un-matched		0	0
+	rewired			0	0
+	size errors		0	0
+	pruned			0	0
+	active			2	2
+	total			2	2
+
+				  nets
+	un-matched		0	0
+	merged			0	0
+	pruned			0	0
+	active			4	4
+	total			4	4
+
+				terminals
+	un-matched		0	0
+	matched but
+	different type		0	0
+	total			4	4
+End comparison:      Oct 18 18:55:43 2013
+
+
+Comparison program completed successfully.

@@ -1,0 +1,426 @@
+// Name        : serialThread.cc
+// ENSC 351 Project Part 4.  March 2013  Prepared by:
+//      - Craig Scratchley, Simon Fraser University, craig_scratchley@alumni.sfu.ca
+//		- Eric Matthews (for myTcdrain design)
+
+//	Completed by:	Elaine Chiang (ST# 301116459)
+//					Barry Yim 	  (ST# 301118482)
+// List below any people who helped you with the assignment
+// Helpers     : ...
+//			   :
+// Version     : April 3rd
+// Copyright   : Copyright 2013, Craig Scratchley
+// Description : Starting point for ENSC 351 Project Part 4
+//============================================================================
+
+#include "myIO-private.h"
+
+#ifdef MY_SER
+
+#include <iostream>
+#include <pthread.h>
+#include <sys/neutrino.h>
+#include <hw/inout.h>
+#include <hw/8250.h>
+
+#include "defines.h" // for BufSz
+#include "WcsQnx.h"
+#include "RageUtil_CircularBuffer.h"
+#include "myIO.h"
+#include "VNPE.h"
+#include "WcsPosix.h"
+
+using namespace std;
+
+#define INT_VIA_EVENT // change and use for Step 5
+
+#define USE_INTERRUPT_LOCK
+#ifndef USE_INTERRUPT_LOCK
+static bool isrCriticalSection = false;
+#else
+static intrspin_t spinlocktx;	// memset( spinlock, 0, sizeof( *spinlock ) );
+#endif
+
+#define PULSE_CODE_COM_INT (_PULSE_CODE_MINAVAIL + 1)
+
+// bit masks for the value carried by the pulse with code PULSE_CODE_COM_INT
+#define RX 1      	// 2^0
+#define DRAINED 2 	// 2^1		//hint for Step 4
+
+extern int otherSideD;
+extern int channelSer;
+
+///declaring circular buffer variables///
+static CircBuf<char> inB;
+static CircBuf<char> outB;
+
+static bool outstanding_II_TX;
+static int tcdrainRcvid;		//hint for Step 4
+
+static int baseReg;
+static int hwSerialIrq;
+
+#define IRQ4        "4"
+#define IRQ3		"3"
+
+enum columns {
+	DEVICE_PATH,
+	BASE_ADDRESS,
+	SER_IRQ};
+
+const int serInfoRowSize = SER_IRQ + 1;
+const char* serInfo[][serInfoRowSize] = {
+		{"/dev/ser1", "0x3F8", IRQ4},
+		{"/dev/ser2", "0x2F8", IRQ3},
+		{"/dev/ser3", "0x3E8", IRQ4},
+		{"/dev/ser4", "0x2E8", IRQ3},
+		{NULL, NULL, NULL}
+};
+
+#define BASE_REG_INIT(index)		strtol(serInfo[(index)][BASE_ADDRESS], NULL, 0)
+#define HW_SERIAL_IRQ_INIT(index)	strtol(serInfo[(index)][SER_IRQ], NULL, 0)
+
+static int serIntId;
+
+#ifdef INT_VIA_EVENT
+static pthread_t SerialDevThrdId;
+#endif
+
+//Hardware specifications
+
+// 300 bps
+#define DivisorLow  0x80
+#define DivisorHi   0x01
+
+// 57600 bps
+//#define DivisorLow  0x02
+//#define DivisorHi   0x00
+
+/****************************************************************************
+ ********************UartInitialization Function*****************************
+ ***************************************************************************/
+void UartInitialization()
+{
+	//-------initialize the 8250chip, etc.---------
+	//First disable interrupt-----
+	out8( (baseReg+REG_IE), 0x00 );
+	//Set the DLAB to 1
+	out8( (baseReg+REG_LC), LCR_DLAB );
+
+	//-------Set baud rate---------
+	out8( (baseReg+REG_DL0), DivisorLow );
+	out8( (baseReg+REG_DL1), DivisorHi );
+
+	//-------Set Bit Pattern-------
+	//---8-N-1, No Parity----------
+	out8( (baseReg+REG_LC), LCR_BITS_MASK );
+
+	//Set FIFO(First In/First Out) on or off
+	// *** CHANGE for Step 3 ***
+	//FIFO is disabled here
+	out8( (baseReg+REG_FC), FCR_FIFO_ENABLE );
+
+
+	//Turn on DTR, RTS, and AUX Out2
+	out8( (baseReg+REG_MC), MCR_DTR | MCR_RTS | MCR_OUT2);
+
+	//Enable interrupts on the serial port
+	// *** CHANGE for Step 2A ***
+	//IE_TX Interrupts
+	out8( (baseReg+REG_IE), IE_RX|IE_TX );
+
+	/*The values being written to the registers can be reasoned by looking at the data sheet*/
+}
+
+inline void ReceiveDataFromUART()
+{
+	// [...] fill in for Step 2A
+	char buf;
+	buf = in8(baseReg + REG_RX);
+	inB.write(&buf, 1);
+}
+
+inline void SendDataToUART()
+{
+	char buf;
+
+	//we can't allow thread-level code (on an SMP)
+	//	to write to outB *and* load "outstanding_II_TX"
+	//  in the critical section below.
+
+	/* Use of the isrCriticalSection variable and memory barriers are
+	 * an alternative to using InterruptLock()/InterruptUnlock() primitives
+	 * for this carefully constructed code.  The benefit is that spinning will
+	 * never happen in the ISR and that interrupts do not need to be disabled.
+	 */
+#ifndef USE_INTERRUPT_LOCK
+	isrCriticalSection = true;
+	FullMemoryBarrier(); // isrCriticalSection before outB
+#else
+	InterruptLock(&spinlocktx);
+#endif
+	// should we check here that outstanding_II_TX is false?
+	//   No need, outstanding_II_TX must be false in order to get here.
+	if(!outB.read(&buf, 1))
+	{
+		outstanding_II_TX = true;
+#ifndef USE_INTERRUPT_LOCK
+		WriteMemoryBarrier(); // outstanding_II_TX before isrCriticalSection
+		isrCriticalSection = false;
+#else
+		InterruptUnlock(&spinlocktx);
+#endif
+		return;
+	}
+	else {
+#ifndef USE_INTERRUPT_LOCK
+		FullMemoryBarrier(); // is this needed?
+		isrCriticalSection = false;
+#else
+		InterruptUnlock(&spinlocktx);
+#endif
+	}
+
+	out8(baseReg + REG_TX, buf);
+
+	//Read the LSR to see if FIFO can hold more data
+	//The line below counts on in8() being done before read().  
+	while ((in8(baseReg + REG_LS) & LSR_TXRDY) && outB.read(&buf,1)) 
+	{
+		out8(baseReg + REG_TX, buf);
+	}
+}
+
+const struct sigevent *
+serIntHandler (void *arg, int id)
+{
+	bool sendPulse = false;
+	uint8_t  iir;  //interrupt identification register
+	struct sigevent *eventP = (struct sigevent*) arg;
+	eventP->sigev_value.sival_int = 0;
+
+	while (!((iir = in8 (baseReg + REG_II)) & II_NOINTR)) {
+		/*
+		 * figure out which interrupt source caused the interrupt,
+		 * and determine if we need to do something about it
+		 */
+		iir &= 0x06;	// get bits 1 and 2 (i.e. mask off bit 0, ...)
+		switch (iir) {
+		case    II_TX:
+			SendDataToUART();
+			break;
+
+		case    II_RX:
+			ReceiveDataFromUART();
+			eventP->sigev_value.sival_int |= RX;
+			sendPulse = true;
+			break;
+		}
+	}
+
+	if (sendPulse)
+		return eventP;
+	else
+		return (NULL);
+}	
+
+
+void* SerialDevThrd(void* param)
+{
+	struct sigevent* eventP = (struct sigevent*) param;
+
+	// event to wake up thread from InterruptWait()
+	struct sigevent event2;
+	SIGEV_INTR_INIT( &event2 );
+	serIntId = PE(InterruptAttachEvent(hwSerialIrq, &event2, _NTO_INTR_FLAGS_TRK_MSK));
+
+	while (1)
+	{
+		PE(InterruptWait (0, NULL));
+
+		// call function to handle interrupt and then deliver any returned event using our
+		//	function in SfuQnx.c
+		PE(DeliverEvent(serIntHandler (eventP, serIntId)));
+
+		PE(InterruptUnmask (hwSerialIrq, serIntId));
+	}
+	return NULL;
+}
+
+void gotAPulse (struct _pulse *pulse)
+{
+	if (pulse->code == PULSE_CODE_COM_INT) {
+		if (pulse->value.sival_int & RX) {
+			// [...] more to fill in for Step 2A
+			//		some data needs to be written into descriptor 'otherSideD'
+			char buf;
+			int bytesRead=inB.read(&buf, BufSz);
+			write(otherSideD,&buf,bytesRead);
+		}
+		// [...] probably put something here for Step 4
+		//sends pulse back to let primary know it is empty
+		if(pulse->value.sival_int & DRAINED)
+		{
+			if(tcdrainRcvid)
+			{
+			PE(MsgReply(tcdrainRcvid, EOK, NULL, 0));
+			}
+		}
+	}
+
+	else {
+		// unexpected pulse->code
+		cerr << "Unexpected pulse->code in serialThread.cc" << endl;
+		exit(EXIT_FAILURE);
+	}
+}
+
+bool gotAMessage (int rcvid, ClientMessageT *msg)
+{
+	// determine the kind of message that it is
+	switch (msg->type) {
+
+	// client with data
+	case MT_WRITE_DATA:
+		// in the code below, we don't want to end up with the situation
+		//	where outstanding_II_TX is true and buffer has data.
+		// this code will work on a uniprocessor or multiprocessor
+
+		char defCache[BufSz];
+		int bytesRead;
+		bytesRead = PE_NOT(MsgRead(rcvid, defCache, msg->dataMsgHeader.size, sizeof(_data_msg_header)),(int) msg->dataMsgHeader.size);
+
+		int written;
+		// outstanding_II_TX might be true at this point.
+		written = outB.write(defCache, bytesRead);
+		// we've got to make sure that parts of outB.write through to
+		//	the loading of outstanding_II_TX don't happen in sequence
+		//	during the ISR's critical section (on SMP).
+#ifdef USE_INTERRUPT_LOCK
+		// The 3 lines below ensure this.
+		InterruptLock(&spinlocktx);
+		// ISR can't now be in its critical section
+		InterruptUnlock(&spinlocktx);
+#else
+		//  As discussed in SendDataToUART, the isrCriticalSection variable can be used
+		//  instead.
+		FullMemoryBarrier();
+		while (isrCriticalSection) {
+			// something like a pause instruction is needed on a
+			//		hyperthreading processor
+			// the '::: "memory"' part should force a compiler fence so that the
+			// compiler does not optimise the loop variable into a processor register
+			asm volatile("pause" ::: "memory");
+		};
+		ReadMemoryBarrier();
+#endif
+
+		// ISR could be invoked here one or more times, emptying the buffer and 
+		//	setting outstanding_II_TX
+		if (outstanding_II_TX) { // what if var loaded false, then ISR changes it before test. no problem
+			char buf;
+			// nothing external of interest can happen until out8() called.
+			// it is safe to read from outB because ISR can't at this point
+			// (ISR only reads if outstanding_II_TX is false)
+			// (ISR only checks for LSR_TXRDY bit in the case of II_TX)
+			if (outB.read(&buf, 1)) {
+				outstanding_II_TX = false;	
+				// What happens if UART interrupts (due to, for example, RX)? 
+				// No worries, II_TX should only happen once until more data is given.
+				out8(baseReg + REG_TX, buf);
+				// interrupt could fire again anytime after this point, 
+				//	   setting outstanding_II_TX again.
+			}
+		}
+		PE(MsgReply(rcvid, written, NULL, 0));
+		break;			
+
+	case MT_CLOSE_CMD:
+		PE(InterruptDetach(serIntId));
+		//should an error in InterruptDetach be reported by MsgReply?
+		PE(MsgReply(rcvid, EOK, NULL, 0));
+
+		break;
+
+	case MT_TCDRAIN:
+		//if outB is not empty
+		//int num = num_readable();
+		if (outstanding_II_TX)
+		{
+			tcdrainRcvid = rcvid;
+		}
+		else
+		{
+			PE(MsgReply(rcvid, EOK, NULL, 0));
+		}
+		break;
+	}
+
+	return false;
+}
+
+void* SerialThrd(void *funcParam)
+{
+	// initialization
+	inB.reserve(BufSz);
+	outB.reserve(BufSz);
+	outstanding_II_TX = false;
+
+	const char* path = (const char*) funcParam;
+	int row=-1;
+	const char* devicePath;
+	do {
+		row++;
+		devicePath = serInfo[row][DEVICE_PATH];
+	} while (devicePath && strcmp(path, serInfo[row][DEVICE_PATH]));
+	if (devicePath) {
+		baseReg = BASE_REG_INIT(row);
+		hwSerialIrq = HW_SERIAL_IRQ_INIT(row); 
+	}
+	else {
+		std::cerr << "Couldn't get device information for path " << path << std::endl;
+		exit(EXIT_FAILURE);
+	};
+
+	//To gain I/O privity
+	PE(ThreadCtl( _NTO_TCTL_IO, NULL ));
+
+	char msgBuf[sizeof(ClientMessageT)];
+	ClientMessageT* msg=(ClientMessageT*) msgBuf; // the message itself
+
+	int coidSer = PE(ConnectAttach(0, 0, channelSer, 0, 0));
+
+	struct sigevent event;
+	SIGEV_PULSE_INIT(&event, coidSer, SIGEV_PULSE_PRIO_INHERIT, PULSE_CODE_COM_INT, 0);
+
+	// *** Use conditional compilation and make changes below for Step 5***
+#ifdef INT_VIA_EVENT
+	//interrupt attach event is on
+	PE_EOK(wcs_thread_create(&SerialDevThrdId, SerialDevThrd, &event, 7, "SerialDThrd"));
+#else
+	serIntId = PE(InterruptAttach(hwSerialIrq, serIntHandler, &event, sizeof(event), _NTO_INTR_FLAGS_TRK_MSK));
+
+#endif
+	// outB is assumed to be empty when the Chip is initialized.
+	UartInitialization();
+
+	bool finished = false;
+	// receive messages
+	while (!finished) {
+		int rcvid = PE(MsgReceive (channelSer, msg, sizeof (ClientMessageT), NULL));
+		if (rcvid)
+			finished = gotAMessage (rcvid, msg);
+		else
+			gotAPulse(&(msg->pulse));
+	}
+#ifdef INT_VIA_EVENT
+	PE_EOK(pthread_abort(SerialDevThrdId));
+#endif
+	cout << "SerialThrd will now exit" << endl;
+	return (NULL);
+
+}
+
+#endif // MY_SER
+
+

@@ -1,0 +1,49 @@
+NOR: Group 14 
+
+* Technology Dependent design rules/parameters
+.include /ensc/fac1/fcampi/esil/hspice/cmosp18/rules.inc
+
+* Transistor models 
+.protect
+.LIB `/ensc/fac1/fcampi/esil/hspice/cmosp18/log018.l' TT  $ typical process corner.
+.unprotect
+
+* Supply Sources
+.param pwr=1.2 
+.temp  25
+Vvdd  vdd  0 dc pwr
+Vvdds vdds 0 dc pwr
+Vgnd  gnd  0 dc 0
+Vgnds gnds 0 dc 0
+
+* Logic 
+.param Wn=Wm#
+Xpmos1 vdd a c vdds pt_st w=2*Wn
+Xpmos2 c b z vdds pt_st w=2*Wn
+Xnmos1 gnd a z gnds nt_st w=Wn
+Xnmos2 gnd b z gnds nt_st w=Wn
+
+Cload z 0 20p
+
+* Input Stimuli (Step response)
+VA  a  0 PWL(0n 0 20ns 0 21ns pwr)
+VB  b  0 PWL(0n 0 4ns 0 5ns pwr 14ns pwr 15ns 0 29ns 0 30ns pwr)
+
+* Simulation Parameters ************************
+.tran 1ns 40ns START=0 
+
+* .tran 0.01ps 40ns START=0 sweep Wn START=Wn# STOP=4*Wn# STEP=Wn#
+
+.option post
+.meas tran tpd_in01      trig v(a) val='pwr*0.5' cross=1
++                        targ v(z) val='pwr*0.5' cross=1 
+.meas tran ttr           trig v(z) val='pwr*0.8' fall=1
++                        targ v(z) val='pwr*0.2' fall=1
+.meas tran leak_pow_in1  avg power FROM=12ns TO=14ns
+.meas tran leak_pow_in0  avg power FROM= 6ns TO= 8ns
+.meas tran dyn_pow       avg power FROM= 9ns TO=10ns
+
+************************************************
+
+.end
+  

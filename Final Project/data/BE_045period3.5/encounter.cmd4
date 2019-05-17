@@ -1,0 +1,253 @@
+#######################################################
+#                                                     #
+#  Encounter Command Logging File                     #
+#  Created on Wed Nov 13 20:09:12 2013                #
+#                                                     #
+#######################################################
+
+#@(#)CDS: Encounter v09.10-p004_1 (32bit) 12/02/2009 20:50 (Linux 2.6)
+#@(#)CDS: NanoRoute v09.10-p020 NR091118-1115/USR62-UB (database version 2.30, 86.1.1) {superthreading v1.13}
+#@(#)CDS: CeltIC v09.10-p001_1 (32bit) 11/20/2009 16:06:17 (Linux 2.6.9-78.0.25.ELsmp)
+#@(#)CDS: CTE 09.10-p003_1 (32bit) Dec  2 2009 16:44:23 (Linux 2.6.9-78.ELsmp)
+#@(#)CDS: CPE v09.10-p005
+
+set_global report_precision 5
+loadConfig inputs/RegFile.conf
+setCteReport
+saveDesign ./DBS/01-importDesign.enc -relativePath -compress
+setAnalysisMode -analysistype single -checkType setup -skew true -clockPropagation sdcControl
+timeDesign -drvReports -slackReports -pathreports -expandReg2Reg -expandedViews -reportOnly -numPaths 10 -outDir results/timing/01-importDesign-timeDesign.setup
+report_timing -net -format {instance arc cell slew net annotation load delay arrival} -max_paths 10 >  results/timing/01_Timing.rpt
+summaryReport -outfile results/summary/01-importDesign.rpt
+floorPlan -su 1 0.9 4 4 4 4
+editPin -fixedPin 1 -snap TRACK -side Top -unit TRACK -layer 2 -spreadType center -spacing 5.0 -pin {{addressA[0]} {addressA[1]} {addressA[2]} {addressA[3]} {addressA[4]} {addressB[0]} {addressB[1]} {addressB[2]} {addressB[3]} {addressB[4]} {dataIn[0]} {dataIn[1]} {dataIn[2]} {dataIn[3]} {dataIn[4]} {dataIn[5]} {dataIn[6]} {dataIn[7]} {dataIn[8]} {dataIn[9]} {dataIn[10]} {dataIn[11]} {dataIn[12]} {dataIn[13]} {dataIn[14]} {dataIn[15]} {addressIn[0]} {addressIn[1]} {addressIn[2]} {addressIn[3]} {addressIn[4]} clk reset write }
+editPin -fixedPin 1 -snap TRACK -side Bottom -use TIELOW -unit TRACK -layer 2 -spreadType center -spacing 10.0 -pin {{outA[0]} {outA[1]} {outA[2]} {outA[3]} {outA[4]} {outA[5]} {outA[6]} {outA[7]} {outA[8]} {outA[9]} {outA[10]} {outA[11]} {outA[12]} {outA[13]} {outA[14]} {outA[15]} {outB[0]} {outB[1]} {outB[2]} {outB[3]} {outB[4]} {outB[5]} {outB[6]} {outB[7]} {outB[8]} {dataIn[9]} {outB[10]} {outB[11]} {outB[12]} {outB[13]} {outB[14]} {outB[15]}}
+addRing -width_left 0.8 -width_bottom 0.8 -width_top 0.8 -width_right 0.8 -spacing_bottom 0.8 -spacing_top 0.8 -spacing_left 0.8 -spacing_right 0.8 -layer_top metal9 -layer_bottom metal9 -layer_left metal10 -layer_right metal10 -lb 1 -lt 1 -rb 1 -rt 1 -nets {VDD VSS}
+addStripe -direction vertical -set_to_set_distance 9.6 -spacing 4 -layer metal10 -width 0.8 -nets {VSS VDD }
+sroute -noPadPins -noPadRings -routingEffort allowShortJogs -nets {VDD VSS}
+defOut -floorplan -noStdCells results/RegFile_floor.def
+saveDesign ./DBS/02-floorplan.enc -relativePath -compress
+summaryReport -outfile results/summary/02-floorplan.rpt
+zoomOut
+zoomOut
+zoomOut
+zoomOut
+zoomOut
+zoomOut
+zoomOut
+zoomIn
+zoomIn
+zoomIn
+windowSelect 0.491 0.197 0.285 0.223
+panPage 1 0
+panPage 1 0
+panPage -1 0
+panPage -1 0
+panPage -1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage -1 0
+panPage -1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+zoomOut
+zoomOut
+zoomOut
+zoomOut
+zoomOut
+zoomIn
+zoomIn
+zoomIn
+zoomIn
+zoomIn
+panPage -1 0
+panPage -1 0
+panPage -1 0
+panPage -1 0
+panPage -1 0
+panPage -1 0
+panPage -1 0
+panPage -1 0
+panPage -1 0
+panPage -1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage -1 0
+panPage 1 0
+panPage 1 0
+panPage -1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage -1 0
+windowSelect 90.374 0.349 91.723 -1.014
+windowSelect 88.234 0.601 90.163 -0.361
+zoomIn
+zoomOut
+zoomOut
+zoomOut
+zoomOut
+zoomOut
+zoomOut
+panPage -1 0
+panPage -1 0
+panPage 1 0
+panPage 1 0
+panPage 0 1
+panPage 0 1
+panPage 0 -1
+windowSelect 41.553 102.278 93.867 77.615
+zoomIn
+windowSelect 66.737 105.417 78.621 110.499
+windowSelect 64.346 85.538 48.353 105.267
+panPage -1 0
+panPage 1 0
+panPage 0 -1
+zoomIn
+panPage -1 0
+panPage -1 0
+panPage 1 0
+panPage -1 0
+panPage 0 1
+zoomIn
+panPage 1 0
+panPage 1 0
+zoomIn
+panPage 0 1
+panPage 0 -1
+zoomIn
+panPage 0 1
+panPage -1 0
+panPage -1 0
+panPage -1 0
+panPage -1 0
+panPage -1 0
+panPage -1 0
+panPage 1 0
+panPage 1 0
+zoomIn
+zoomIn
+panPage 0 -1
+panPage -1 0
+panPage -1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage -1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage -1 0
+panPage -1 0
+panPage -1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage 1 0
+panPage -1 0
+zoomOut
+fit
+deselectAll
+man floorplan
+man editPin

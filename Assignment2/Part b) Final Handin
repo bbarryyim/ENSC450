@@ -1,0 +1,109 @@
+FLIP FLOP: Group 14 
+
+* Technology Dependent design rules/parameters
+.include /ensc/fac1/fcampi/esil/hspice/cmosp18/rules.inc
+
+* Transistor models 
+.protect
+.LIB `/ensc/fac1/fcampi/esil/hspice/cmosp18/log018.l' TT  $ typical process corner.
+.unprotect
+
+* Supply Sources
+.param pwr=1.2 
+.temp  25
+Vvdd  vdd  0 dc pwr
+Vvdds vdds 0 dc pwr
+Vgnd  gnd  0 dc 0
+Vgnds gnds 0 dc 0
+
+* Subcircuits
+* CMOS Inverter is composed of a PMOS and NMOS
+.subckt INV a z vdd gnd vdds gnds Wn=Wm#
+Xpmos vdd a z vdds pt_st Wn=2*Wm#
+Xnmos gnd a z gnds nt_st Wn=Wm#
+.ends
+
+* Transmission Gate is composed of a PMOS and NMOS, with common source and drain gates  
+.subckt TRANSGATE d g notg s vdds gnds Wn=Wm#  
+Xpmos d notg s vdds pt_st Wn=2*Wm#
+Xnmos d g    s gnds nt_st Wn=Wm#
+.ends
+
+* DLatch is composed of 2 transmission gates and 2 inverters
+.subckt DLATCH d  ck   nck   a    notqm vdd gnd vdds gnds Wn=Wm#
+Xtransgate1 d ck  nck a vdds gnds TRANSGATE Wn=Wm#
+Xinv1 a     notqm vdd gnd vdds gnds INV Wn=Wm#
+Xinv2 notqm b     vdd gnd vdds gnds INV Wn=Wm#
+Xtransgate2 b nck ck  a vdds gnds TRANSGATE Wn=Wm#
+.ends
+
+* Logic 
+.param Wn=Wm#
+
+********************** Using Subcircuits **************************
+* This method was used first to ensure the circuit performed the
+* correct flip flop performance. **********************************
+*Xinvclk clk nclk vdd gnd vdds gnds INV Wn=Wm#
+*Xdlatch1 d    nclk clk  q     notq vdd gnd vdds gnds DLATCH Wn=Wm#
+*Xdlatch2 notq clk  nclk notq1 q1   vdd gnd vdds gnds DLATCH Wn=Wm#
+
+****************** WITHOUT DLatch Subcircuit **********************
+* We chose not to use the Dlatch subcircuit in order to adjust 
+* the widths of individual components to satisfy rise and fall 
+* time requirements. We used the TRANSGATE and INV subcircuit in
+* the feedback loops because we felt they would not contribute to 
+* rise and fall times. ********************************************
+
+*Xinvclk0 clk nclk vdd gnd vdds gnds INV Wn=Wm#
+Xpmos0 vdd clk nclk vdds pt_st w=5*Wn
+Xnmos0 gnd clk nclk gnds nt_st w=1*Wn
+
+*Xtransgate1 d nclk  clk q vdds gnds TRANSGATE Wn=Wm#
+Xpmos1 d clk  q vdds pt_st w=13*Wn
+Xnmos1 d nclk q gnds nt_st w=3*Wn
+
+Xtransgate2 a clk nclk  q vdds gnds TRANSGATE Wn=Wm#
+
+*Xinv3 q notq vdd gnd vdds gnds INV Wn=Wm#
+Xpmos3 vdd q notq vdds pt_st w=30*Wn
+Xnmos3 gnd q notq gnds nt_st w=3*Wn
+
+Xinv4 notq a vdd gnd vdds gnds INV Wn=Wm#
+
+*Xtransgate5 notq  clk   nclk notq1 vdds gnds TRANSGATE Wn=Wm#
+Xpmos5 notq nclk notq1 vdds pt_st w=13*Wn
+Xnmos5 notq clk  notq1 gnds nt_st w=3*Wn
+
+Xtransgate6 b nclk  clk  notq1 vdds gnds TRANSGATE Wn=Wm#
+
+*Xinv7 notq1 q1 vdd gnd vdds gnds INV Wn=Wm#
+Xpmos7 vdd notq1 q1 vdds pt_st w=24*Wn
+Xnmos7 gnd notq1 q1 gnds nt_st w=6*Wn
+
+Xinv8 q1 b vdd gnd vdds gnds INV Wn=Wm#
+
+Cload q1 0 20f
+
+* Input Stimuli (Step response)
+VD  	d  0 PWL(0n 0 1.300ns 0 1.375ns pwr 1.52ns pwr 1.53ns 0)
+Vclk  clk  0 PWL(0n 0 .4ns 0 .5ns pwr .9ns pwr 1.0ns 0 1.4ns 0 1.5ns pwr 1.9ns pwr 2.0ns 0 2.4ns 0 2.5ns pwr)
+
+* Simulation Parameters ************************
+.tran 0.01ps 3ns START=0 
+
+*.tran 0.01ps 5.0ns START=0 sweep Wn START=Wm# STOP=300*Wm# STEP=50*Wm#
+
+.option post
+.meas tran tpd_in01      trig v(D) val='pwr*0.5' cross=1
++                        targ v(Q) val='pwr*0.5' cross=1 
+.meas tran risetrans     trig v(q1) val='pwr*0.2' rise=1
++                        targ v(q1) val='pwr*0.8' rise=1
+.meas tran falltrans	 trig v(q1) val='pwr*0.8' fall=1
++                        targ v(q1) val='pwr*0.2' fall=1
+*.meas tran leak_pow_in1  avg power FROM=12ns TO=14ns
+*.meas tran leak_pow_in0  avg power FROM= 6ns TO= 8ns
+*.meas tran dyn_pow       avg power FROM= 9ns TO=10ns
+
+************************************************
+
+.end

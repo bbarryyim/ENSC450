@@ -1,0 +1,113 @@
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : reference
+Design : assignment0
+Version: Z-2007.03-SP5
+Date   : Thu Oct 31 11:56:31 2013
+****************************************
+
+Attributes:
+    b - black box (unknown)
+   bo - allows boundary optimization
+    d - dont_touch
+   mo - map_only
+    h - hierarchical
+    n - noncombinational
+    r - removable
+    s - synthetic operator
+    u - contains unmapped logic
+
+Reference          Library       Unit Area   Count    Total Area   Attributes
+-----------------------------------------------------------------------------
+NAND_X1            SpiceLib180
+                                 12.000000       9    108.000000  
+NOT_X1             SpiceLib180
+                                  5.000000       4     20.000000  
+-----------------------------------------------------------------------------
+Total 2 references                                    128.000000
+1
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+        -transition_time
+        -capacitance
+Design : assignment0
+Version: Z-2007.03-SP5
+Date   : Thu Oct 31 11:56:31 2013
+****************************************
+
+Operating Conditions: SS_1.05V_125C   Library: SpiceLib180
+Wire Load Model Mode: top
+
+  Startpoint: a (input port)
+  Endpoint: z (output port)
+  Path Group: default
+  Path Type: max
+
+  Point                           Cap     Trans      Incr       Path
+  ---------------------------------------------------------------------
+  input external delay                               0.00       0.00 f
+  a (in)                         4.00      1.00      0.00       0.00 f
+  U12/Z (NAND_X1)                9.00      0.28      0.43       0.43 r
+  U10/Z (NOT_X1)                 5.00      0.23      0.20       0.63 f
+  U7/Z (NAND_X1)                 3.00      0.21      0.16       0.79 r
+  U6/Z (NAND_X1)                 6.00      0.35      0.27       1.07 f
+  z (out)                                  0.35      0.00       1.07 f
+  data arrival time                                             1.07
+
+  max_delay                                          1.07       1.07
+  output external delay                              0.00       1.07
+  data required time                                            1.07
+  ---------------------------------------------------------------------
+  data required time                                            1.07
+  data arrival time                                            -1.07
+  ---------------------------------------------------------------------
+  slack (MET)                                                   0.00
+
+
+1
+Warning: Main library 'SpiceLib180' does not specify the following unit required for power: 'Leakage Power'. (PWR-424)
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+Warning: There is no defined clock in the design. (PWR-80)
+Warning: Design has unannotated primary inputs. (PWR-414)
+ 
+****************************************
+Report : power
+        -analysis_effort low
+Design : assignment0
+Version: Z-2007.03-SP5
+Date   : Thu Oct 31 11:56:31 2013
+****************************************
+
+
+Library(s) Used:
+
+    SpiceLib180 (File: /ensc/grad1/cmc-14/Assignment4/SpiceLib180_SS_1.05_125C.db)
+
+Information: The cells in your design are not characterized for internal power. (PWR-229)
+
+Operating Conditions: SS_1.05V_125C   Library: SpiceLib180
+Wire Load Model Mode: top
+
+
+Global Operating Voltage = 1.05 
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000ff
+    Time Units = 1ns
+    Dynamic Power Units = 1uW    (derived from V,C,T units)
+    Leakage Power Units = Unitless
+
+
+  Cell Internal Power  =   0.0000 uW    (0%)
+  Net Switching Power  =  13.4680 uW  (100%)
+                         ---------
+Total Dynamic Power    =  13.4680 uW  (100%)
+
+Cell Leakage Power     =   0.0000 
+
+1

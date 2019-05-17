@@ -1,0 +1,23 @@
+setDesignMode -process 90
+setAnalysisMode -analysisType single -asyncChecks async -checkType setup -clkSrcPath true -clockPropagation sdcControl -skew true -virtualIPO false
+setTrialRouteMode -handlePreroute true -keepMarkedOptRoutes true
+setOptMode -congOpt false -drcMargin 0 -effort high -fixDrc true -route noPreserve -setupTargetSlack 0
+setExtractRCMode  -effortLevel low -engine detail -total_c_th 0 -relative_c_th 1 -coupling_c_th 0.2
+setDelayCalMode -engine default
+setCTSMode -traceDPinAsLeaf true
+setNanoRouteMode -quiet -drouteAutoStop false
+setNanoRouteMode -quiet -drouteFixAntenna false
+setNanoRouteMode -quiet -routeBottomRoutingLayer 1
+setNanoRouteMode -quiet -routeInsertAntennaDiode false
+setNanoRouteMode -quiet -routeSelectedNetOnly false
+setNanoRouteMode -quiet -routeSiEffort "medium"
+setNanoRouteMode -quiet -routeTdrEffort 2
+setNanoRouteMode -quiet -routeTdrPreferLayerPercentage 0.000000
+setNanoRouteMode -quiet -routeTopRoutingLayer 5
+setNanoRouteMode -quiet -routeUseBlockageForAutoGgrid true
+setNanoRouteMode -quiet -routeWithSiDriven true
+setNanoRouteMode -quiet -routeWithSiPostRouteFix false
+setNanoRouteMode -quiet -routeWithTimingDriven true
+
+setPlaceMode -ignoreScan true -incrPlaceForOpt true -timingDriven true
+setIlmMode -highFanoutPort true -loopBack false 
